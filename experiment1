@@ -1,6 +1,6 @@
 mysql> create table EMPLOYEE(emp_id int,name varchar(20),city varchar(30),dob date,adhar_no int);
 Query OK, 0 rows affected (0.02 sec)
-
+//QUESTION1
 mysql> desc EMPLOYEE;
 +----------+-------------+------+-----+---------+-------+
 | Field    | Type        | Null | Key | Default | Extra |
@@ -14,7 +14,7 @@ mysql> desc EMPLOYEE;
 5 rows in set (0.01 sec)
 
 
-
+//QUESTION2
 mysql> create table STUDENT2(roll_no int primary key,name varchar(20) not null,age int check(age<100),address varchar(40),gender varchar(20)default'm');
 Query OK, 0 rows affected (0.02 sec)
 
@@ -31,7 +31,7 @@ mysql> desc STUDENT2;
 5 rows in set (0.00 sec)
 
 
-
+//QUESTION3
 mysql> create temporary table STUDENT1 select * from STUDENT2;
 Query OK, 0 rows affected (0.00 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -49,7 +49,7 @@ mysql> desc STUDENT1;
 5 rows in set (0.00 sec)
 
 
-
+//QYESTION4
 mysql> create table if not exists EMPLOYEE_DUP select * from EMPLOYEE;
 Query OK, 0 rows affected (0.02 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -65,4 +65,21 @@ mysql> desc EMPLOYEE_DUP;
 | adhar_no | int         | YES  |     | NULL    |       |
 +----------+-------------+------+-----+---------+-------+
 5 rows in set (0.00 sec)
+
+
+//QUESTION5
+mysql> CREATE TABLE CUSTOMER(ID INT PRIMARY KEY,NAME VARCHAR(20),ADDRESS VARCHAR(40),CITY VARCHAR(40),PH_N0 INT);
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DESC CUSTOMER;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| ID      | int         | NO   | PRI | NULL    |       |
+| NAME    | varchar(20) | YES  |     | NULL    |       |
+| ADDRESS | varchar(40) | YES  |     | NULL    |       |
+| CITY    | varchar(40) | YES  |     | NULL    |       |
+| PH_N0   | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
 
