@@ -1,6 +1,8 @@
+//DDL COOMANDS
+//QUESTION1
+
 mysql> create table EMPLOYEE(emp_id int,name varchar(20),city varchar(30),dob date,adhar_no int);
 Query OK, 0 rows affected (0.02 sec)
-//QUESTION1
 mysql> desc EMPLOYEE;
 +----------+-------------+------+-----+---------+-------+
 | Field    | Type        | Null | Key | Default | Extra |
