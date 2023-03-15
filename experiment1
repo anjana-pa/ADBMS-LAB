@@ -98,3 +98,16 @@ mysql> DESC PRODUCT;
 +-------+--------------+------+-----+---------+-------+
 3 rows in set (0.00 sec)
 
+mysql> CREATE TABLE INVOICE_MASTER(INV_ID INT PRIMARY KEY,ID INT,INV_DATE DATE,FOREIGN KEY(ID)REFERENCES CUSTOMER(ID));
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> DESC INVOICE_MASTER;
++----------+------+------+-----+---------+-------+
+| Field    | Type | Null | Key | Default | Extra |
++----------+------+------+-----+---------+-------+
+| INV_ID   | int  | NO   | PRI | NULL    |       |
+| ID       | int  | YES  | MUL | NULL    |       |
+| INV_DATE | date | YES  |     | NULL    |       |
++----------+------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
