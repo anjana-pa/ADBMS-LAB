@@ -47,3 +47,22 @@ mysql> desc STUDENT1;
 | gender  | varchar(20) | YES  |     | m       | NULL  |
 +---------+-------------+------+-----+---------+-------+
 5 rows in set (0.00 sec)
+
+
+
+mysql> create table if not exists EMPLOYEE_DUP select * from EMPLOYEE;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> desc EMPLOYEE_DUP;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| emp_id   | int         | YES  |     | NULL    |       |
+| name     | varchar(20) | YES  |     | NULL    |       |
+| city     | varchar(30) | YES  |     | NULL    |       |
+| dob      | date        | YES  |     | NULL    |       |
+| adhar_no | int         | YES  |     | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
