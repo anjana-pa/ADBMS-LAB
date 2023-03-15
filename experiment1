@@ -1,3 +1,6 @@
+                                 EXPERIMENT NO: 1.1 DDL COMMANDS
+                                  *******************************
+
 //DDL COOMANDS
 //QUESTION1
 
@@ -69,7 +72,7 @@ mysql> desc EMPLOYEE_DUP;
 5 rows in set (0.00 sec)
 
 
-//QUESTION5
+//QUESTION5 ??????????????????
 mysql> CREATE TABLE CUSTOMER(ID INT PRIMARY KEY,NAME VARCHAR(20),ADDRESS VARCHAR(40),CITY VARCHAR(40),PH_N0 INT);
 Query OK, 0 rows affected (0.02 sec)
 
@@ -111,3 +114,4 @@ mysql> DESC INVOICE_MASTER;
 +----------+------+------+-----+---------+-------+
 3 rows in set (0.01 sec)
 
+//ADD QUESTION
