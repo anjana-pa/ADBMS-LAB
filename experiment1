@@ -2,7 +2,8 @@
                                   *******************************
 
 //DDL COOMANDS
-//QUESTION1
+a)DDL COMMANDS-CREATE
+//QUESTION1:CREATE A TABLE EMPLOYEE HAVE THE FOLLOWING FIELDS(EMP_ID,NAME,CITY,DOB,ADHAR_NO)
 
 mysql> create table EMPLOYEE(emp_id int,name varchar(20),city varchar(30),dob date,adhar_no int);
 Query OK, 0 rows affected (0.02 sec)
@@ -19,7 +20,11 @@ mysql> desc EMPLOYEE;
 5 rows in set (0.01 sec)
 
 
-//QUESTION2
+//QUESTION2:CREATE DATABASE STUDENT HAVE THE FIELDS(ROLL_NO,NAME,AGE,ADDRESS,GENDER)AND FOLLOWING CONSTRAINTS ON IT.
+  ROLL_NO-PRIMARY KEY
+  NAME-DOES NOT ALLOW NULL VALUES
+  AGE-MUST BE IN BETWEEN(0-99),DOES NOT ALLOW NULL VALUES
+  GENDER-DAFAULT VALUE IS 'm'
 mysql> create table STUDENT2(roll_no int primary key,name varchar(20) not null,age int check(age<100),address varchar(40),gender varchar(20)default'm');
 Query OK, 0 rows affected (0.02 sec)
 
@@ -36,7 +41,7 @@ mysql> desc STUDENT2;
 5 rows in set (0.00 sec)
 
 
-//QUESTION3
+//QUESTION3:CREATE A TEMPORARY TABLE STUDENT1 OF STUDENT RELATION
 mysql> create temporary table STUDENT1 select * from STUDENT2;
 Query OK, 0 rows affected (0.00 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -54,7 +59,7 @@ mysql> desc STUDENT1;
 5 rows in set (0.00 sec)
 
 
-//QYESTION4
+//QYESTION4:CREATE A DUPLICATE TABLE OF EMPLOYEE
 mysql> create table if not exists EMPLOYEE_DUP select * from EMPLOYEE;
 Query OK, 0 rows affected (0.02 sec)
 Records: 0  Duplicates: 0  Warnings: 0
@@ -72,7 +77,7 @@ mysql> desc EMPLOYEE_DUP;
 5 rows in set (0.00 sec)
 
 
-//QUESTION5 ??????????????????
+//QUESTION5:
 mysql> CREATE TABLE CUSTOMER(ID INT PRIMARY KEY,NAME VARCHAR(20),ADDRESS VARCHAR(40),CITY VARCHAR(40),PH_N0 INT);
 Query OK, 0 rows affected (0.02 sec)
 
