@@ -192,7 +192,23 @@ mysql> ALTER TABLE EMPLOYEE DROP COLUMN emp_id;
 Query OK, 0 rows affected (0.01 sec)
 Records: 0  Duplicates: 0  Warnings: 0
 
+mysql> DESC EMPLOYEE;mysql> ALTER TABLE EMPLOYEE ADD CONSTRAINT A1 UNIQUE(SSN),ADD CONSTRAINT A2 UNIQUE(adhar_no);
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
 mysql> DESC EMPLOYEE;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| SSN      | int         | YES  | UNI | NULL    |       |
+| name     | varchar(20) | YES  |     | NULL    |       |
+| city     | varchar(30) | YES  |     | NULL    |       |
+| dob      | year        | YES  |     | NULL    |       |
+| adhar_no | int         | YES  | UNI | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+
 +----------+-------------+------+-----+---------+-------+
 | Field    | Type        | Null | Key | Default | Extra |
 +----------+-------------+------+-----+---------+-------+
@@ -221,4 +237,62 @@ mysql> DESC EMPLOYEE;
 | adhar_no | int         | YES  | UNI | NULL    |       |
 +----------+-------------+------+-----+---------+-------+
 5 rows in set (0.01 sec)
+
+5. Delete the NULL constraint of ‘age’ in the STUDENT table.
+
+mysql> ALTER TABLE STUDENT MODIFY AGE INT NULL;
+Query OK, 0 rows affected (0.02 sec)
+Records: 0  Duplicates: 0  Warnings: 0
+
+mysql> DESC STUDENT;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll_no | int         | NO   | PRI | NULL    |       |
+| name    | varchar(20) | NO   |     | NULL    |       |
+| AGE     | int         | YES  |     | NULL    |       |
+| address | varchar(40) | YES  |     | NULL    |       |
+| gender  | varchar(20) | YES  |     | m       |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
+6. Change the table name EMPLOYEE as PERSON
+
+mysql> ALTER TABLE EMPLOYEE RENAME TO PERSON;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> DESC PERSON;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| SSN      | int         | YES  | UNI | NULL    |       |
+| name     | varchar(20) | YES  |     | NULL    |       |
+| city     | varchar(30) | YES  |     | NULL    |       |
+| dob      | year        | YES  |     | NULL    |       |
+| adhar_no | int         | YES  | UNI | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
+7. Delete the table EMPLOYEE_DUP
+mysql> DROP TABLE EMPLOYEE_DUP;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SHOW TABLES;
++-----------------+
+| Tables_in_kuttu |
++-----------------+
+| PERSON          |
+| STUDENT         |
+| book            |
+| customer        |
+| customer1       |
+| employee        |
+| order1          |
+| person          |
+| stud            |
+| student         |
++-----------------+
+10 rows in set (0.00 sec)
+
+
 
