@@ -77,7 +77,13 @@ mysql> desc EMPLOYEE_DUP;
 5 rows in set (0.00 sec)
 
 
-//QUESTION5:
+//QUESTION5:Create an INVOICE database and having following tables.
+
+        Customer(id, name, address, city, ph_no)
+        Product(pid,  pname, price (default 0))
+        Invoice_master(inv_id, cust_id(FK), inv_date
+        Invoice_item(inv_id (FK),  pid(FK), quantity)
+   
 mysql>CREATE DATABASE INVOICE;
 mysql>USE INVOICE;
 Reading table information for completion of table and column names
