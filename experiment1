@@ -131,7 +131,6 @@ mysql> DESC INVOICE_MASTER;
 +----------+------+------+-----+---------+-------+
 3 rows in set (0.01 sec)
 
-//ADD QUESTION
 
 mysql> CREATE TABLE INVOICE_ITEM(INV_ID INT,PID INT,QUANTITY INT,FOREIGN KEY(INV_ID) REFERENCES INVOICE_MASTER(INV_ID),FOREIGN KEY(PID)REFERENCES PRODUCT(PID));
 Query OK, 0 rows affected (0.03 sec)
