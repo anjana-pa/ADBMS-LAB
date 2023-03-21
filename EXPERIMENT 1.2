@@ -2,6 +2,18 @@
       a) DML COMMANDS-INSERT
       1.Insert values in EMPLOYEE table.
       
+  mysql> DESC EMPLOYEE;
++----------+-------------+------+-----+---------+-------+
+| Field    | Type        | Null | Key | Default | Extra |
++----------+-------------+------+-----+---------+-------+
+| SSN      | int         | YES  | UNI | NULL    |       |
+| name     | varchar(20) | YES  |     | NULL    |       |
+| city     | varchar(30) | YES  |     | NULL    |       |
+| dob      | year        | YES  |     | NULL    |       |
+| adhar_no | int         | YES  | UNI | NULL    |       |
++----------+-------------+------+-----+---------+-------+
+5 rows in set (0.01 sec)
+
 mysql> INSERT INTO EMPLOYEE VALUES(1,'RIYA','KOLKATA',2000,34526)2,'LIYA','BANGLORE',2001,24526),(3,'MIYA','BANGLORE',2002,67526),(4,'ZIYA','CALICUT',2001,90526),(5,'DIYA','KOCHI',1998,24326);
 Query OK, 4 rows affected (0.01 sec)
 Records: 4  Duplicates: 0  Warnings: 0
@@ -18,7 +30,19 @@ mysql> SELECT * FROM EMPLOYEE;
 +------+------+----------+------+----------+
 
  2.Insert values in STUDENT table.
- 
+
+mysql> DESC STUDENT;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| roll_no | int         | NO   |     | NULL    |       |
+| name    | varchar(20) | NO   |     | NULL    |       |
+| AGE     | int         | YES  |     | NULL    |       |
+| address | varchar(40) | YES  |     | NULL    |       |
+| gender  | varchar(20) | YES  |     | m       |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
 mysql> INSERT INTO STUDENT VALUES(001,'RONY',20,'CALICUT','m'),(002,'RIYA',21,'WAYANAD','f'),(003,'LIYA',20,'KOCHI','f'),(004,'TONY',23,'BANGLORE','m'),(005,'ZIYA',22,'KOLKATA','f');
 Query OK, 5 rows affected (0.01 sec)
 Records: 5  Duplicates: 0  Warnings: 0
