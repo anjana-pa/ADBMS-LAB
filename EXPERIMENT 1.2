@@ -56,7 +56,19 @@ mysql> SHOW TABLES;
 4 rows in set (0.01 sec)
 
 //INVOICE
- 
+
+ mysql> DESC CUSTOMER;
++---------+-------------+------+-----+---------+-------+
+| Field   | Type        | Null | Key | Default | Extra |
++---------+-------------+------+-----+---------+-------+
+| ID      | int         | NO   | PRI | NULL    |       |
+| NAME    | varchar(20) | YES  |     | NULL    |       |
+| ADDRESS | varchar(40) | YES  |     | NULL    |       |
+| CITY    | varchar(40) | YES  |     | NULL    |       |
+| PH_N0   | int         | YES  |     | NULL    |       |
++---------+-------------+------+-----+---------+-------+
+5 rows in set (0.00 sec)
+
 mysql> INSERT INTO CUSTOMER VALUES(1,'RIYA','PALLATH','CALICUT',9876545612),(2,'LIYA','PALLIKKADAVATH','BANGLORE',9876545613),(3,'MIYA','THEKKEPUZHIYIL','CHENNAI',3948478389),(4,'SIYA','KEZHAKKETHIRUVATH','KOLKATA',3647882937),(5,'ZIYA','SREENILAYAM','KOCHI',9372537698),(6,'ROY','CHAKKITAKANDI','BANGLORE',8493678465),(7,'TONY','VADASSERI','KOLKATA',9876543210);
 Query OK, 7 rows affected (0.00 sec)
 Records: 7  Duplicates: 0  Warnings: 0
@@ -75,6 +87,35 @@ mysql> SELECT * FROM CUSTOMER;
 +----+------+-------------------+----------+------------+
 7 rows in set (0.00 sec)
 
-//INVOICE_ITEM
+//PRODUCT
+mysql> DESC PRODUCT;
++-------+--------------+------+-----+---------+-------+
+| Field | Type         | Null | Key | Default | Extra |
++-------+--------------+------+-----+---------+-------+
+| PID   | int          | NO   | PRI | NULL    |       |
+| PNAME | varchar(20)  | YES  |     | NULL    |       |
+| PRICE | decimal(3,2) | YES  |     | 0.00    |       |
++-------+--------------+------+-----+---------+-------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO PRODUCT VALUES(001,'DOVE',2.50),(002,'DAZLER',1.90),(003,'BLUELADY',2.50),(004,'PUMA',9.00),(005,'NIKE',5.90),(006,'ALLENSOLLY',2.70),(007,'FOGG',5.9);
+Query OK, 7 rows affected (0.00 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM PRODUCT;
++-----+------------+-------+
+| PID | PNAME      | PRICE |
++-----+------------+-------+
+|   1 | DOVE       |  2.50 |
+|   2 | DAZLER     |  1.90 |
+|   3 | BLUELADY   |  2.50 |
+|   4 | PUMA       |  9.00 |
+|   5 | NIKE       |  5.90 |
+|   6 | ALLENSOLLY |  2.70 |
+|   7 | FOGG       |  5.90 |
++-----+------------+-------+
+7 rows in set (0.00 sec)
+
+
 
 
