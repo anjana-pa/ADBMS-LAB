@@ -36,4 +36,45 @@ mysql> SELECT *FROM STUDENT;
 5 rows in set (0.00 sec)
 
  
+3.Insert values in INVOICE database
+
+
+mysql> use INVOICE;
+Reading table information for completion of table and column names
+You can turn off this feature to get a quicker startup with -A
+
+Database changed
+mysql> SHOW TABLES;
++-------------------+
+| Tables_in_INVOICE |
++-------------------+
+| CUSTOMER          |
+| INVOICE_ITEM      |
+| INVOICE_MASTER    |
+| PRODUCT           |
++-------------------+
+4 rows in set (0.01 sec)
+
+//INVOICE
  
+mysql> INSERT INTO CUSTOMER VALUES(1,'RIYA','PALLATH','CALICUT',9876545612),(2,'LIYA','PALLIKKADAVATH','BANGLORE',9876545613),(3,'MIYA','THEKKEPUZHIYIL','CHENNAI',3948478389),(4,'SIYA','KEZHAKKETHIRUVATH','KOLKATA',3647882937),(5,'ZIYA','SREENILAYAM','KOCHI',9372537698),(6,'ROY','CHAKKITAKANDI','BANGLORE',8493678465),(7,'TONY','VADASSERI','KOLKATA',9876543210);
+Query OK, 7 rows affected (0.00 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM CUSTOMER;
++----+------+-------------------+----------+------------+
+| ID | NAME | ADDRESS           | CITY     | PH_N0      |
++----+------+-------------------+----------+------------+
+|  1 | RIYA | PALLATH           | CALICUT  | 9876545612 |
+|  2 | LIYA | PALLIKKADAVATH    | BANGLORE | 9876545613 |
+|  3 | MIYA | THEKKEPUZHIYIL    | CHENNAI  | 3948478389 |
+|  4 | SIYA | KEZHAKKETHIRUVATH | KOLKATA  | 3647882937 |
+|  5 | ZIYA | SREENILAYAM       | KOCHI    | 9372537698 |
+|  6 | ROY  | CHAKKITAKANDI     | BANGLORE | 8493678465 |
+|  7 | TONY | VADASSERI         | KOLKATA  | 9876543210 |
++----+------+-------------------+----------+------------+
+7 rows in set (0.00 sec)
+
+//INVOICE_ITEM
+
+
