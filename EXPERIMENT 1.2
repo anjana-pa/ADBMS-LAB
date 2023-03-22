@@ -340,4 +340,64 @@ mysql> SELECT*FROM INVOICE_ITEM;
 |      7 |    7 |       90 |
 +--------+------+----------+
 7 rows in set (0.00 sec)
+ 
+c) DML COMMAND- DELETE
+1. Delete the record of customer id ‘10001’. 
+mysql> SELECT *FROM CUSTOMER;
++----+------+-------------------+-----------+------------+
+| ID | NAME | ADDRESS           | CITY      | PH_N0      |
++----+------+-------------------+-----------+------------+
+|  1 | RIYA | PALLATH           | KOZHIKODE | 9876545612 |
+|  2 | LIYA | PALLIKKADAVATH    | BANGLORE  | 9876545613 |
+|  3 | MIYA | THEKKEPUZHIYIL    | CHENNAI   | 3948478389 |
+|  4 | SIYA | KEZHAKKETHIRUVATH | KOLKATA   | 3647882937 |
+|  5 | ZIYA | SREENILAYAM       | KOCHI     | 9372537698 |
+|  6 | ROY  | MANGALASSERI      | DELHI     | 9876543437 |
+|  7 | TONY | VADASSERI         | KOLKATA   | 9876543210 |
+|  8 | BONY | GREENVILLA        | GOA       | NULL       |
++----+------+-------------------+-----------+------------+
+8 rows in set (0.00 sec)
 
+mysql> DELETE FROM CUSTOMER WHERE ID=6;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM CUSTOMER;
++----+------+-------------------+-----------+------------+
+| ID | NAME | ADDRESS           | CITY      | PH_N0      |
++----+------+-------------------+-----------+------------+
+|  1 | RIYA | PALLATH           | KOZHIKODE | 9876545612 |
+|  2 | LIYA | PALLIKKADAVATH    | BANGLORE  | 9876545613 |
+|  3 | MIYA | THEKKEPUZHIYIL    | CHENNAI   | 3948478389 |
+|  4 | SIYA | KEZHAKKETHIRUVATH | KOLKATA   | 3647882937 |
+|  5 | ZIYA | SREENILAYAM       | KOCHI     | 9372537698 |
+|  7 | TONY | VADASSERI         | KOLKATA   | 9876543210 |
+|  8 | BONY | GREENVILLA        | GOA       | NULL       |
++----+------+-------------------+-----------+------------+
+7 rows in set (0.00 sec)
+
+
+2. Delete all purchase details of items its quantity less than 2. 
+
+mysql> DELETE FROM INVOICE_ITEM WHERE QUANTITY<2;
+Query OK, 1 row affected (0.01 sec)
+
+mysql> SELECT*FROM INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|      1 |    1 |       18 |
+|      2 |    2 |        4 |
+|      3 |    3 |       10 |
+|      4 |    4 |        5 |
+|      6 |    6 |        4 |
+|      7 |    7 |       90 |
++--------+------+----------+
+6 rows in set (0.00 sec)
+
+3. Delete the purchase details of product ‘pen’ in the in_id ‘101’. 
+
+4. Delete details of employees who does not have phone number. 
+
+5. Delete all records from STUDENT table.
+
+6. Delete Invoice details of a particular customer.
