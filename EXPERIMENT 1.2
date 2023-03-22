@@ -201,4 +201,104 @@ mysql> SELECT * FROM INVOICE_ITEM;
 7 rows in set (0.00 sec)
 
 
+b)DML COMMANDS- UPDATE
+1. Update the price of a particular product. 
+mysql> SELECT * FROM PRODUCT;;
++-----+------------+-------+
+| PID | PNAME      | PRICE |
++-----+------------+-------+
+|   1 | DOVE       |  2.50 |
+|   2 | DAZLER     |  1.90 |
+|   3 | BLUELADY   |  2.50 |
+|   4 | PUMA       |  9.00 |
+|   5 | NIKE       |  5.90 |
+|   6 | ALLENSOLLY |  2.70 |
+|   7 | FOGG       |  5.90 |
++-----+------------+-------+
+7 rows in set (0.01 sec)
+
+mysql> UPDATE PRODUCT SET PRICE=5.00 WHERE PID=1;
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM PRODUCT;
++-----+------------+-------+
+| PID | PNAME      | PRICE |
++-----+------------+-------+
+|   1 | DOVE       |  5.00 |
+|   2 | DAZLER     |  1.90 |
+|   3 | BLUELADY   |  2.50 |
+|   4 | PUMA       |  9.00 |
+|   5 | NIKE       |  5.90 |
+|   6 | ALLENSOLLY |  2.70 |
+|   7 | FOGG       |  5.90 |
++-----+------------+-------+
+7 rows in set (0.00 sec)
+
+2. Change the name of city ‘calicut’ to ‘kozhikode’ in the customer table.
+mysql> SELECT * FROM CUSTOMER;
++----+------+-------------------+----------+------------+
+| ID | NAME | ADDRESS           | CITY     | PH_N0      |
++----+------+-------------------+----------+------------+
+|  1 | RIYA | PALLATH           | CALICUT  | 9876545612 |
+|  2 | LIYA | PALLIKKADAVATH    | BANGLORE | 9876545613 |
+|  3 | MIYA | THEKKEPUZHIYIL    | CHENNAI  | 3948478389 |
+|  4 | SIYA | KEZHAKKETHIRUVATH | KOLKATA  | 3647882937 |
+|  5 | ZIYA | SREENILAYAM       | KOCHI    | 9372537698 |
+|  6 | ROY  | CHAKKITAKANDI     | BANGLORE | 8493678465 |
+|  7 | TONY | VADASSERI         | KOLKATA  | 9876543210 |
++----+------+-------------------+----------+------------+
+7 rows in set (0.00 sec)
+
+mysql> UPDATE CUSTOMER SET CITY='KOZHIKODE' WHERE ID=1;
+Query OK, 1 row affected (0.00 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> SELECT * FROM CUSTOMER;
++----+------+-------------------+-----------+------------+
+| ID | NAME | ADDRESS           | CITY      | PH_N0      |
++----+------+-------------------+-----------+------------+
+|  1 | RIYA | PALLATH           | KOZHIKODE | 9876545612 |
+|  2 | LIYA | PALLIKKADAVATH    | BANGLORE  | 9876545613 |
+|  3 | MIYA | THEKKEPUZHIYIL    | CHENNAI   | 3948478389 |
+|  4 | SIYA | KEZHAKKETHIRUVATH | KOLKATA   | 3647882937 |
+|  5 | ZIYA | SREENILAYAM       | KOCHI     | 9372537698 |
+|  6 | ROY  | CHAKKITAKANDI     | BANGLORE  | 8493678465 |
+|  7 | TONY | VADASSERI         | KOLKATA   | 9876543210 |
++----+------+-------------------+-----------+------------+
+7 rows in set (0.00 sec)
+
+3. Update all prices with 2% of its original price. 
+
+mysql> SELECT * FROM PRODUCT;
++-----+------------+-------+
+| PID | PNAME      | PRICE |
++-----+------------+-------+
+|   1 | DOVE       |  5.00 |
+|   2 | DAZLER     |  1.90 |
+|   3 | BLUELADY   |  2.50 |
+|   4 | PUMA       |  9.00 |
+|   5 | NIKE       |  5.90 |
+|   6 | ALLENSOLLY |  2.70 |
+|   7 | FOGG       |  5.90 |
++-----+------------+-------+
+7 rows in set (0.00 sec)
+
+mysql> UPDATE PRODUCT SET PRICE=PRICE+(PRICE*2/100);
+Query OK, 7 rows affected, 4 warnings (0.01 sec)
+Rows matched: 7  Changed: 7  Warnings: 4
+
+mysql> SELECT * FROM PRODUCT;
++-----+------------+-------+
+| PID | PNAME      | PRICE |
++-----+------------+-------+
+|   1 | DOVE       |  5.10 |
+|   2 | DAZLER     |  1.94 |
+|   3 | BLUELADY   |  2.55 |
+|   4 | PUMA       |  9.18 |
+|   5 | NIKE       |  6.02 |
+|   6 | ALLENSOLLY |  2.75 |
+|   7 | FOGG       |  6.02 |
++-----+------------+-------+
+7 rows in set (0.00 sec)
 
