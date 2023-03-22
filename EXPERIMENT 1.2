@@ -170,5 +170,35 @@ mysql> SELECT * FROM INVOICE_MASTER;
 +--------+------+------------+
 8 rows in set (0.00 sec)
 
+//INVOICE_ITEM
+
+mysql> DESC INVOICE_ITEM;
++----------+------+------+-----+---------+-------+
+| Field    | Type | Null | Key | Default | Extra |
++----------+------+------+-----+---------+-------+
+| INV_ID   | int  | YES  | MUL | NULL    |       |
+| PID      | int  | YES  | MUL | NULL    |       |
+| QUANTITY | int  | YES  |     | NULL    |       |
++----------+------+------+-----+---------+-------+
+3 rows in set (0.01 sec)
+
+mysql> INSERT INTO INVOICE_ITEM VALUES(1,1,2),(2,2,4),(3,3,10),(4,4,5),(5,5,1),(6,6,4),(7,7,90);
+Query OK, 7 rows affected (0.01 sec)
+Records: 7  Duplicates: 0  Warnings: 0
+
+mysql> SELECT * FROM INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|      1 |    1 |        2 |
+|      2 |    2 |        4 |
+|      3 |    3 |       10 |
+|      4 |    4 |        5 |
+|      5 |    5 |        1 |
+|      6 |    6 |        4 |
+|      7 |    7 |       90 |
++--------+------+----------+
+7 rows in set (0.00 sec)
+
 
 
