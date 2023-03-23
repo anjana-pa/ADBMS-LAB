@@ -394,10 +394,128 @@ mysql> SELECT*FROM INVOICE_ITEM;
 +--------+------+----------+
 6 rows in set (0.00 sec)
 
-3. Delete the purchase details of product ‘pen’ in the in_id ‘101’. 
+3. Delete the purchase details of product ‘PUMA’ in the in_id ‘4’. 
+
+mysql> SELECT * FROM PRODUCT;
++-----+------------+-------+
+| PID | PNAME      | PRICE |
++-----+------------+-------+
+|   1 | DOVE       |  5.10 |
+|   2 | DAZLER     |  1.94 |
+|   3 | BLUELADY   |  2.55 |
+|   4 | PUMA       |  9.18 |
+|   5 | NIKE       |  6.02 |
+|   6 | ALLENSOLLY |  2.75 |
+|   7 | FOGG       |  6.02 |
++-----+------------+-------+
+7 rows in set (0.00 sec)
+mysql> SELECT * FROM INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|      1 |    1 |       18 |
+|      2 |    2 |        4 |
+|      3 |    3 |       10 |
+|      4 |    4 |        5 |
+|      7 |    7 |       90 |
++--------+------+----------+
+5 rows in set (0.00 sec)
+
+mysql> DELETE FROM INVOICE_ITEM WHERE PID=4 AND INV_ID=4;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|      1 |    1 |       18 |
+|      2 |    2 |        4 |
+|      3 |    3 |       10 |
+|      7 |    7 |       90 |
++--------+------+----------+
+4 rows in set (0.00 sec)
+
 
 4. Delete details of employees who does not have phone number. 
 
+mysql> SELECT * FROM CUSTOMER;
++----+------+-------------------+-----------+------------+
+| ID | NAME | ADDRESS           | CITY      | PH_N0      |
++----+------+-------------------+-----------+------------+
+|  1 | RIYA | PALLATH           | KOZHIKODE | 9876545612 |
+|  2 | LIYA | PALLIKKADAVATH    | BANGLORE  | 9876545613 |
+|  3 | MIYA | THEKKEPUZHIYIL    | CHENNAI   | 3948478389 |
+|  4 | SIYA | KEZHAKKETHIRUVATH | KOLKATA   | 3647882937 |
+|  5 | ZIYA | SREENILAYAM       | KOCHI     | 9372537698 |
+|  7 | TONY | VADASSERI         | KOLKATA   | 9876543210 |
+|  8 | BONY | GREENVILLA        | GOA       | NULL       |
++----+------+-------------------+-----------+------------+
+7 rows in set (0.00 sec)
+
+mysql> DELETE FROM CUSTOMER WHERE PH_N0 IS NULL;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM CUSTOMER;
++----+------+-------------------+-----------+------------+
+| ID | NAME | ADDRESS           | CITY      | PH_N0      |
++----+------+-------------------+-----------+------------+
+|  1 | RIYA | PALLATH           | KOZHIKODE | 9876545612 |
+|  2 | LIYA | PALLIKKADAVATH    | BANGLORE  | 9876545613 |
+|  3 | MIYA | THEKKEPUZHIYIL    | CHENNAI   | 3948478389 |
+|  4 | SIYA | KEZHAKKETHIRUVATH | KOLKATA   | 3647882937 |
+|  5 | ZIYA | SREENILAYAM       | KOCHI     | 9372537698 |
+|  7 | TONY | VADASSERI         | KOLKATA   | 9876543210 |
++----+------+-------------------+-----------+------------+
+6 rows in set (0.00 sec)
+
 5. Delete all records from STUDENT table.
 
+mysql> SELECT * FROM STUDENT;
++---------+------+------+----------+--------+
+| roll_no | name | AGE  | address  | gender |
++---------+------+------+----------+--------+
+|       1 | RONY |   20 | CALICUT  | m      |
+|       2 | RIYA |   21 | WAYANAD  | f      |
+|       3 | LIYA |   20 | KOCHI    | f      |
+|       4 | TONY |   23 | BANGLORE | m      |
+|       5 | ZIYA |   22 | KOLKATA  | f      |
++---------+------+------+----------+--------+
+5 rows in set (0.01 sec)
+
+mysql> DELETE FROM STUDENT;
+Query OK, 5 rows affected (0.00 sec)
+
+mysql> SELECT * FROM STUDENT;
+Empty set (0.00 sec)
+
 6. Delete Invoice details of a particular customer.
+
+mysql> SELECT * FROM CUSTOMER;
++----+------+-------------------+-----------+------------+
+| ID | NAME | ADDRESS           | CITY      | PH_N0      |
++----+------+-------------------+-----------+------------+
+|  1 | RIYA | PALLATH           | KOZHIKODE | 9876545612 |
+|  2 | LIYA | PALLIKKADAVATH    | BANGLORE  | 9876545613 |
+|  3 | MIYA | THEKKEPUZHIYIL    | CHENNAI   | 3948478389 |
+|  4 | SIYA | KEZHAKKETHIRUVATH | KOLKATA   | 3647882937 |
+|  5 | ZIYA | SREENILAYAM       | KOCHI     | 9372537698 |
+|  7 | TONY | VADASSERI         | KOLKATA   | 9876543210 |
++----+------+-------------------+-----------+------------+
+6 rows in set (0.00 sec)
+
+mysql> DELETE FROM CUSTOMER WHERE ID=4;
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT * FROM CUSTOMER;
++----+------+----------------+-----------+------------+
+| ID | NAME | ADDRESS        | CITY      | PH_N0      |
++----+------+----------------+-----------+------------+
+|  1 | RIYA | PALLATH        | KOZHIKODE | 9876545612 |
+|  2 | LIYA | PALLIKKADAVATH | BANGLORE  | 9876545613 |
+|  3 | MIYA | THEKKEPUZHIYIL | CHENNAI   | 3948478389 |
+|  5 | ZIYA | SREENILAYAM    | KOCHI     | 9372537698 |
+|  7 | TONY | VADASSERI      | KOLKATA   | 9876543210 |
++----+------+----------------+-----------+------------+
+5 rows in set (0.00 sec)
+
+
