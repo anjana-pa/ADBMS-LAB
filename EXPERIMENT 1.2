@@ -186,7 +186,7 @@ mysql> INSERT INTO INVOICE_ITEM VALUES(1,1,2),(2,2,4),(3,3,10),(4,4,5),(5,5,1),(
 Query OK, 7 rows affected (0.01 sec)
 Records: 7  Duplicates: 0  Warnings: 0
 
-mysql> SELECT * FROM INVOICE_ITEM;
+mysql> SELECT * FROM INVOICE_ITEM;   //CHANGE THE TABLE
 +--------+------+----------+
 | INV_ID | PID  | QUANTITY |
 +--------+------+----------+
@@ -503,7 +503,7 @@ mysql> SELECT * FROM CUSTOMER;
 +----+------+-------------------+-----------+------------+
 6 rows in set (0.00 sec)
 
-mysql> DELETE FROM CUSTOMER WHERE ID=4;
+mysql> DELETE FROM CUSTOMER WHERE ID=4;  //WRONG QUERY
 Query OK, 1 row affected (0.00 sec)
 
 mysql> SELECT * FROM CUSTOMER;
@@ -518,4 +518,5 @@ mysql> SELECT * FROM CUSTOMER;
 +----+------+----------------+-----------+------------+
 5 rows in set (0.00 sec)
 
-
+//UPDATE INVOICE ITEM TABLE
+//INVOICE ITEM DETAILS OF A PARTICULAR CUSTOMER
