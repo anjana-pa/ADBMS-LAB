@@ -151,7 +151,7 @@ mysql> DESC  INVOICE_MASTER;
 +----------+------+------+-----+---------+-------+
 3 rows in set (0.00 sec)
 
-mysql> INSERT INTO INVOICE_MASTER VALUES(01,1,'2023-01-01'),(02,3,'2023-01-04'),(03,3,'2023-01-15'),(04,4,'2023-02-12'),(05,6,'2023-02-14'),(06,6,'2023-02-23'),(07,7,'2023-03-04'),(08,7,'2023-03-05');
+mysql> INSERT INTO INVOICE_MASTER VALUES(01,1,'2023-01-01'),(02,3,'2023-01-04'),(03,3,'2023-01-15'),(04,4,'2023-02-12'),(05,6,'2023-02-14'),(06,6,'2023-02-23'),(07,7,'2023-03-04');
 Query OK, 8 rows affected (0.01 sec)
 Records: 8  Duplicates: 0  Warnings: 0
 
@@ -166,9 +166,9 @@ mysql> SELECT * FROM INVOICE_MASTER;
 |      5 |    6 | 2023-02-14 |
 |      6 |    6 | 2023-02-23 |
 |      7 |    7 | 2023-03-04 |
-|      8 |    7 | 2023-03-05 |
 +--------+------+------------+
-8 rows in set (0.00 sec)
+7 rows in set (0.00 sec)
+
 
 //INVOICE_ITEM
 
@@ -490,32 +490,31 @@ Empty set (0.00 sec)
 
 6. Delete Invoice details of a particular customer.
 
-mysql> SELECT * FROM CUSTOMER;
-+----+------+-------------------+-----------+------------+
-| ID | NAME | ADDRESS           | CITY      | PH_N0      |
-+----+------+-------------------+-----------+------------+
-|  1 | RIYA | PALLATH           | KOZHIKODE | 9876545612 |
-|  2 | LIYA | PALLIKKADAVATH    | BANGLORE  | 9876545613 |
-|  3 | MIYA | THEKKEPUZHIYIL    | CHENNAI   | 3948478389 |
-|  4 | SIYA | KEZHAKKETHIRUVATH | KOLKATA   | 3647882937 |
-|  5 | ZIYA | SREENILAYAM       | KOCHI     | 9372537698 |
-|  7 | TONY | VADASSERI         | KOLKATA   | 9876543210 |
-+----+------+-------------------+-----------+------------+
-6 rows in set (0.00 sec)
+mysql> SELECT * FROM INVOICE_MASTER;
++--------+------+------------+
+| INV_ID | ID   | INV_DATE   |
++--------+------+------------+
+|      1 |    1 | 2023-01-01 |
+|      2 |    3 | 2023-01-04 |
+|      3 |    3 | 2023-01-15 |
+|      7 |    7 | 2023-03-04 |
+|      8 |    7 | 2023-03-05 |
++--------+------+------------+
+5 rows in set (0.00 sec)
 
-mysql> DELETE FROM CUSTOMER WHERE ID=4;  //WRONG QUERY
-Query OK, 1 row affected (0.00 sec)
+mysql> DELETE FROM INVOICE_MASTER WHERE ID=4;
+Query OK, 0 rows affected (0.00 sec)
 
-mysql> SELECT * FROM CUSTOMER;
-+----+------+----------------+-----------+------------+
-| ID | NAME | ADDRESS        | CITY      | PH_N0      |
-+----+------+----------------+-----------+------------+
-|  1 | RIYA | PALLATH        | KOZHIKODE | 9876545612 |
-|  2 | LIYA | PALLIKKADAVATH | BANGLORE  | 9876545613 |
-|  3 | MIYA | THEKKEPUZHIYIL | CHENNAI   | 3948478389 |
-|  5 | ZIYA | SREENILAYAM    | KOCHI     | 9372537698 |
-|  7 | TONY | VADASSERI      | KOLKATA   | 9876543210 |
-+----+------+----------------+-----------+------------+
+mysql> SELECT * FROM INVOICE_MASTER;
++--------+------+------------+
+| INV_ID | ID   | INV_DATE   |
++--------+------+------------+
+|      1 |    1 | 2023-01-01 |
+|      2 |    3 | 2023-01-04 |
+|      3 |    3 | 2023-01-15 |
+|      7 |    7 | 2023-03-04 |
+|      8 |    7 | 2023-03-05 |
++--------+------+------------+
 5 rows in set (0.00 sec)
 
 //UPDATE INVOICE ITEM TABLE
