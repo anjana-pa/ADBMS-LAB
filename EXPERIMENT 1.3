@@ -1,0 +1,139 @@
+a) TCL COMMANDS
+   1.Commit
+
+mysql> SET AUTOCOMMIT=OFF;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEE;
++------+------+----------+------+----------+
+| SSN  | name | city     | dob  | adhar_no |
++------+------+----------+------+----------+
+|    1 | RIYA | KOLKATA  | 2000 |    34526 |
+|    2 | LIYA | BANGLORE | 2001 |    24526 |
+|    3 | MIYA | BANGLORE | 2002 |    67526 |
+|    4 | ZIYA | CALICUT  | 2001 |    90526 |
+|    5 | DIYA | KOCHI    | 1998 |    24326 |
++------+------+----------+------+----------+
+5 rows in set (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(6,'TONY','DELHI',2002,89654),(7,'RONY','MADRAS',1999,98542);
+Query OK, 2 rows affected (0.00 sec)
+Records: 2  Duplicates: 0  Warnings: 0
+
+mysql> COMMIT;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT * FROM EMPLOYEE;
++------+------+----------+------+----------+
+| SSN  | name | city     | dob  | adhar_no |
++------+------+----------+------+----------+
+|    1 | RIYA | KOLKATA  | 2000 |    34526 |
+|    2 | LIYA | BANGLORE | 2001 |    24526 |
+|    3 | MIYA | BANGLORE | 2002 |    67526 |
+|    4 | ZIYA | CALICUT  | 2001 |    90526 |
+|    5 | DIYA | KOCHI    | 1998 |    24326 |
+|    6 | TONY | DELHI    | 2002 |    89654 |
+|    7 | RONY | MADRAS   | 1999 |    98542 |
++------+------+----------+------+----------+
+7 rows in set (0.00 sec)
+
+2.Rollback
+
+mysql> SELECT *FROM EMPLOYEE;
++------+------+----------+------+----------+
+| SSN  | name | city     | dob  | adhar_no |
++------+------+----------+------+----------+
+|    1 | RIYA | KOLKATA  | 2000 |    34526 |
+|    2 | LIYA | BANGLORE | 2001 |    24526 |
+|    3 | MIYA | BANGLORE | 2002 |    67526 |
++------+------+----------+------+----------+
+3 rows in set (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(4,'TONY','DELHI',2002,89654);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT *FROM EMPLOYEE;
++------+------+----------+------+----------+
+| SSN  | name | city     | dob  | adhar_no |
++------+------+----------+------+----------+
+|    1 | RIYA | KOLKATA  | 2000 |    34526 |
+|    2 | LIYA | BANGLORE | 2001 |    24526 |
+|    3 | MIYA | BANGLORE | 2002 |    67526 |
+|    4 | TONY | DELHI    | 2002 |    89654 |
++------+------+----------+------+----------+
+4 rows in set (0.00 sec)
+
+mysql> ROLLBACK;
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> SELECT *FROM EMPLOYEE;
++------+------+----------+------+----------+
+| SSN  | name | city     | dob  | adhar_no |
++------+------+----------+------+----------+
+|    1 | RIYA | KOLKATA  | 2000 |    34526 |
+|    2 | LIYA | BANGLORE | 2001 |    24526 |
+|    3 | MIYA | BANGLORE | 2002 |    67526 |
++------+------+----------+------+----------+
+3 rows in set (0.01 sec)
+
+3.Savepoint
+
+mysql> INSERT INTO EMPLOYEE VALUES(4,'TONY','DELHI',2002,89654);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SAVEPOINT S1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(5,'RONY','CALICUT',1999,80754);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(6,'ZIYA','MADRAS',1998,98754);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT *FROM EMPLOYEE;
++------+------+----------+------+----------+
+| SSN  | name | city     | dob  | adhar_no |
++------+------+----------+------+----------+
+|    1 | RIYA | KOLKATA  | 2000 |    34526 |
+|    2 | LIYA | BANGLORE | 2001 |    24526 |
+|    3 | MIYA | BANGLORE | 2002 |    67526 |
+|    4 | TONY | DELHI    | 2002 |    89654 |
+|    5 | RONY | CALICUT  | 1999 |    80754 |
+|    6 | ZIYA | MADRAS   | 1998 |    98754 |
++------+------+----------+------+----------+
+6 rows in set (0.00 sec)
+
+mysql> SAVEPOINT S2;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> INSERT INTO EMPLOYEE VALUES(7,'SIYA','KOCHI',2000,90054);
+Query OK, 1 row affected (0.00 sec)
+
+mysql> SELECT *FROM EMPLOYEE;
++------+------+----------+------+----------+
+| SSN  | name | city     | dob  | adhar_no |
++------+------+----------+------+----------+
+|    1 | RIYA | KOLKATA  | 2000 |    34526 |
+|    2 | LIYA | BANGLORE | 2001 |    24526 |
+|    3 | MIYA | BANGLORE | 2002 |    67526 |
+|    4 | TONY | DELHI    | 2002 |    89654 |
+|    5 | RONY | CALICUT  | 1999 |    80754 |
+|    6 | ZIYA | MADRAS   | 1998 |    98754 |
+|    7 | SIYA | KOCHI    | 2000 |    90054 |
++------+------+----------+------+----------+
+7 rows in set (0.00 sec)
+
+mysql> ROLLBACK TO S1;
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> SELECT *FROM EMPLOYEE;
++------+------+----------+------+----------+
+| SSN  | name | city     | dob  | adhar_no |
++------+------+----------+------+----------+
+|    1 | RIYA | KOLKATA  | 2000 |    34526 |
+|    2 | LIYA | BANGLORE | 2001 |    24526 |
+|    3 | MIYA | BANGLORE | 2002 |    67526 |
+|    4 | TONY | DELHI    | 2002 |    89654 |
++------+------+----------+------+----------+
+4 rows in set (0.00 sec)
+
