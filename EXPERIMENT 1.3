@@ -140,8 +140,41 @@ mysql> SELECT *FROM EMPLOYEE;
                                          b)DCL COMMAND
                                 Create two users user1, user2
 1.GRANT
-    ->Give insert and select privilege to user 1 on customer table in the invoice database.
-    ->Give update and delete privilege to user 2 on all tables in the invoice database.
+ ->Give insert and select privilege to user on customer table in the invoice database.
+    
+mysql> CREATE USER 'USER'@'localhost' IDENTIFIED BY 'pass';
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> GRANT INSERT,SELECT ON CUSTOMER  TO 'USER'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants;
++--------------------------------------------------------------------+
+| Grants for USER@localhost                                          |
++--------------------------------------------------------------------+
+| GRANT USAGE ON *.* TO `USER`@`localhost`                           |
+| GRANT SELECT, INSERT ON `INVOICE`.`CUSTOMER` TO `USER`@`localhost` |
++--------------------------------------------------------------------+
+2 rows in set (0.00 sec)
+
+
+->Give update and delete privilege to user 2 on all tables in the invoice database.
+
+mysql> CREATE USER 'USER3'@'localhost' IDENTIFIED BY 'pas2';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> GRANT DELETE,UPDATE  ON INVOICE.* TO 'USER3'@'localhost';
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> show grants;
++------------------------------------------------------------+
+| Grants for USER3@localhost                                 |
++------------------------------------------------------------+
+| GRANT USAGE ON *.* TO `USER3`@`localhost`                  |
+| GRANT UPDATE, DELETE ON `INVOICE`.* TO `USER3`@`localhost` |
++------------------------------------------------------------+
+2 rows in set (0.01 sec)
+
 
 2.REVOKE
     ->Remove delete privilege of user 2.
