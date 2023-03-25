@@ -64,5 +64,19 @@ mysql> SELECT * FROM PRODUCT WHERE PRICE  BETWEEN 2.55 AND 6.02;
 5 rows in set (0.00 sec)
 
 
-5.List the customer details who lives in ‘ekm’,’tvm’.
+5.List the customer details who lives in ‘CALICUT’,’BANGLORE’.
+
+mysql> SELECT * FROM CUSTOMER WHERE  CITY="CALICUT" OR  CITY="BANGLORE";
++----+------+----------------+----------+------------+
+| ID | NAME | ADDRESS        | CITY     | PH_N0      |
++----+------+----------------+----------+------------+
+|  1 | RIYA | PALLATH        | CALICUT  | 9876545612 |
+|  2 | LIYA | PALLIKKADAVATH | BANGLORE | 9876545613 |
+|  6 | ROY  | CHAKKITAKANDI  | BANGLORE | 8493678465 |
++----+------+----------------+----------+------------+
+3 rows in set (0.00 sec)
+
+
 6.List the invoice details from 1st January 2023 to 15th February 2023
+
+
