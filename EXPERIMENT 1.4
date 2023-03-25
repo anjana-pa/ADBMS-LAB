@@ -51,6 +51,18 @@ mysql> SELECT DISTINCT INV_ID FROM INVOICE_ITEM;
 
 4.List product price between 50rs and 150rs
 
+mysql> SELECT * FROM PRODUCT WHERE PRICE  BETWEEN 2.55 AND 6.02;
++-----+------------+-------+
+| PID | PNAME      | PRICE |
++-----+------------+-------+
+|   1 | DOVE       |  5.10 |
+|   3 | BLUELADY   |  2.55 |
+|   5 | NIKE       |  6.02 |
+|   6 | ALLENSOLLY |  2.75 |
+|   7 | FOGG       |  6.02 |
++-----+------------+-------+
+5 rows in set (0.00 sec)
+
 
 5.List the customer details who lives in ‘ekm’,’tvm’.
 6.List the invoice details from 1st January 2023 to 15th February 2023
