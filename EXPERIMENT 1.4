@@ -77,8 +77,18 @@ mysql> SELECT * FROM CUSTOMER WHERE  CITY="CALICUT" OR  CITY="BANGLORE";
 3 rows in set (0.00 sec)
 
 
-6.List the invoice details from 1st January 2023 to 15th February 2023
+6.List the invoice details from 1st January 2023 to 12th February 2023
 
+mysql>  SELECT * FROM INVOICE_MASTER WHERE INV_DATE between '2023-01-01' and '2023-02-12';
++--------+------+------------+
+| INV_ID | ID   | INV_DATE   |
++--------+------+------------+
+|      1 |    1 | 2023-01-01 |
+|      2 |    3 | 2023-01-04 |
+|      3 |    3 | 2023-01-15 |
+|      4 |    4 | 2023-02-12 |
++--------+------+------------+
+4 rows in set (0.00 sec)
 
 7.List the customer details who not live in ‘tvm’.
 8.List the customers who have no phone number.
