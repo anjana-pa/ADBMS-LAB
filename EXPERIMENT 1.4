@@ -159,7 +159,23 @@ mysql> SELECT NAME FROM CUSTOMER WHERE NAME LIKE 'B%';
 +------+
 1 row in set (0.00 sec)
 
-12. Find the customer names who have ‘e’ or ‘a’ in them.
+12. Find the customer names who have ‘I’ or ‘O’ in them.
+
+mysql> SELECT NAME FROM CUSTOMER WHERE NAME LIKE '%I%'OR name LIKE '%O%';
++------+
+| NAME |
++------+
+| RIYA |
+| LIYA |
+| MIYA |
+| SIYA |
+| ZIYA |
+| ROY  |
+| TONY |
+| BONY |
++------+
+8 rows in set (0.01 sec)
+
 
 13. Find the customer names who have at least 3 characters.
 
