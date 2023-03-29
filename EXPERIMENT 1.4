@@ -117,10 +117,86 @@ mysql> SELECT * FROM CUSTOMER WHERE PH_N0 IS NULL;
 
 9.Display customer names in descending order.
 
+mysql> SELECT NAME FROM CUSTOMER ORDER BY NAME  DESC;
++------+
+| NAME |
++------+
+| ZIYA |
+| TONY |
+| SIYA |
+| ROY  |
+| RIYA |
+| MIYA |
+| LIYA |
+| BONY |
++------+
+8 rows in set (0.00 sec)
 
 10. Display the customer details sorted in ascending by city and descending by names.
-11. Find the customer names start with ‘A’.
+
+mysql> select * from CUSTOMER order by CITY asc,NAME desc;
++----+------+-------------------+----------+------------+
+| ID | NAME | ADDRESS           | CITY     | PH_N0      |
++----+------+-------------------+----------+------------+
+|  6 | ROY  | CHAKKITAKANDI     | BANGLORE | 8493678465 |
+|  2 | LIYA | PALLIKKADAVATH    | BANGLORE | 9876545613 |
+|  1 | RIYA | PALLATH           | CALICUT  | 9876545612 |
+|  8 | BONY | GREENVILLA        | CALICUT  | NULL       |
+|  3 | MIYA | THEKKEPUZHIYIL    | CHENNAI  | 3948478389 |
+|  5 | ZIYA | SREENILAYAM       | KOCHI    | 9372537698 |
+|  7 | TONY | VADASSERI         | KOLKATA  | 9876543210 |
+|  4 | SIYA | KEZHAKKETHIRUVATH | KOLKATA  | 3647882937 |
++----+------+-------------------+----------+------------+
+8 rows in set (0.01 sec)
+
+11. Find the customer names start with ‘B’.
+
+mysql> SELECT NAME FROM CUSTOMER WHERE NAME LIKE 'B%';
++------+
+| NAME |
++------+
+| BONY |
++------+
+1 row in set (0.00 sec)
+
 12. Find the customer names who have ‘e’ or ‘a’ in them.
+
 13. Find the customer names who have at least 3 characters.
-14. List the names of customers their names have ‘r’ in second position.
-15. Find the customer names start with ‘a’ and are at least 3 characters in leng
+
+mysql>  SELECT NAME FROM CUSTOMER WHERE NAME LIKE '___%';
++------+
+| NAME |
++------+
+| RIYA |
+| LIYA |
+| MIYA |
+| SIYA |
+| ZIYA |
+| ROY  |
+| TONY |
+| BONY |
++------+
+8 rows in set (0.00 sec)
+
+14. List the names of customers their names have ‘O’ in second position.
+
+mysql> SELECT NAME FROM CUSTOMER WHERE NAME LIKE '_O%';
++------+
+| NAME |
++------+
+| ROY  |
+| TONY |
+| BONY |
++------+
+3 rows in set (0.00 sec)
+
+15. Find the customer names start with ‘Z’ and are at least 4 characters in leng
+
+mysql> SELECT NAME FROM CUSTOMER WHERE NAME LIKE 'Z__%';
++------+
+| NAME |
++------+
+| ZIYA |
++------+
+1 row in set (0.00 sec)
+
