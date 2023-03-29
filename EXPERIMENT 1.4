@@ -107,8 +107,17 @@ mysql> select * from CUSTOMER  where CITY!="CALICUT";
 
 8.List the customers who have no phone number.
 
+mysql> SELECT * FROM CUSTOMER WHERE PH_N0 IS NULL;
++----+------+------------+---------+-------+
+| ID | NAME | ADDRESS    | CITY    | PH_N0 |
++----+------+------------+---------+-------+
+|  8 | BONY | GREENVILLA | CALICUT | NULL  |
++----+------+------------+---------+-------+
+1 row in set (0.00 sec)
 
 9.Display customer names in descending order.
+
+
 10. Display the customer details sorted in ascending by city and descending by names.
 11. Find the customer names start with ‘A’.
 12. Find the customer names who have ‘e’ or ‘a’ in them.
