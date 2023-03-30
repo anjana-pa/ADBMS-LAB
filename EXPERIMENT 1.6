@@ -1,0 +1,29 @@
+1. Create a view for customers who have purchased products.
+mysql> SELECT * FROM CUSTOMER;
++----+------+-------------------+----------+------------+
+| ID | NAME | ADDRESS           | CITY     | PH_N0      |
++----+------+-------------------+----------+------------+
+|  1 | RIYA | PALLATH           | CALICUT  | 9876545612 |
+|  2 | LIYA | PALLIKKADAVATH    | BANGLORE | 9876545613 |
+|  3 | MIYA | THEKKEPUZHIYIL    | CHENNAI  | 3948478389 |
+|  4 | SIYA | KEZHAKKETHIRUVATH | KOLKATA  | 3647882937 |
+|  5 | ZIYA | SREENILAYAM       | KOCHI    | 9372537698 |
+|  6 | ROY  | CHAKKITAKANDI     | BANGLORE | 8493678465 |
+|  7 | TONY | VADASSERI         | KOLKATA  | 9876543210 |
+|  8 | BONY | GREENVILLA        | CALICUT  | NULL       |
++----+------+-------------------+----------+------------+
+8 rows in set (0.01 sec)
+
+mysql> SELECT * FROM INVOICE_MASTER;
++--------+------+------------+
+| INV_ID | ID   | INV_DATE   |
++--------+------+------------+
+|      1 |    1 | 2023-01-01 |
+|      2 |    3 | 2023-01-04 |
+|      3 |    3 | 2023-01-15 |
+|      4 |    4 | 2023-02-12 |
+|      5 |    6 | 2023-02-14 |
+|      6 |    6 | 2023-02-23 |
+|      7 |    7 | 2023-03-04 |
++--------+------+------------+
+7 rows in set (0.01 sec)
