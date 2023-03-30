@@ -1,9 +1,105 @@
 1.5  ACCESSING DATABASE: (SUBQUERY)
 
+mysql> SELECT * FROM CUSTOMER;
++----+------+-------------------+----------+------------+
+| ID | NAME | ADDRESS           | CITY     | PH_N0      |
++----+------+-------------------+----------+------------+
+|  1 | RIYA | PALLATH           | CALICUT  | 9876545612 |
+|  2 | LIYA | PALLIKKADAVATH    | BANGLORE | 9876545613 |
+|  3 | MIYA | THEKKEPUZHIYIL    | CHENNAI  | 3948478389 |
+|  4 | SIYA | KEZHAKKETHIRUVATH | KOLKATA  | 3647882937 |
+|  5 | ZIYA | SREENILAYAM       | KOCHI    | 9372537698 |
+|  6 | ROY  | CHAKKITAKANDI     | BANGLORE | 8493678465 |
+|  7 | TONY | VADASSERI         | KOLKATA  | 9876543210 |
+|  8 | BONY | GREENVILLA        | CALICUT  | NULL       |
++----+------+-------------------+----------+------------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT * FROM INVOICE_MASTER;
++--------+------+------------+
+| INV_ID | ID   | INV_DATE   |
++--------+------+------------+
+|      1 |    1 | 2023-01-01 |
+|      2 |    3 | 2023-01-04 |
+|      3 |    3 | 2023-01-15 |
+|      4 |    4 | 2023-02-12 |
+|      5 |    6 | 2023-02-14 |
+|      6 |    6 | 2023-02-23 |
+|      7 |    7 | 2023-03-04 |
++--------+------+------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|      1 |    1 |        2 |
+|      2 |    2 |        4 |
+|      3 |    3 |       10 |
+|      4 |    4 |        5 |
+|      5 |    5 |        1 |
+|      6 |    6 |        4 |
+|      7 |    7 |       90 |
++--------+------+----------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM PRODUCT;
++-----+------------+-------+
+| PID | PNAME      | PRICE |
++-----+------------+-------+
+|   1 | DOVE       |  5.10 |
+|   2 | DAZLER     |  1.94 |
+|   3 | BLUELADY   |  2.55 |
+|   4 | PUMA       |  9.18 |
+|   5 | NIKE       |  6.02 |
+|   6 | ALLENSOLLY |  2.75 |
+|   7 | FOGG       |  6.02 |
++-----+------------+-------+
+7 rows in set (0.00 sec)
+
 1.Listthe customer names of invoice date 3rd February 2023.
+
+mysql> SELECT NAME FROM CUSTOMER WHERE ID IN(SELECT INV_ID FROM INVOICE_MASTER Wmysql> SELECT NAME FROM CUSTOMER WHERE ID IN(SELECT ID FROM INVOICE_MASTER WHERE INV_DATE='2023-03-4');
++------+
+| NAME |
++------+
+| TONY |
++------+
+1 row in set (0.01 sec)
+
 2.List the product name and price of each invoice item.
+
+mysql> SELECT PNAME,PRICE FROM PRODUCT WHERE PID IN(SELECT PID FROM INVOICE_ITEM);
++------------+-------+
+| PNAME      | PRICE |
++------------+-------+
+| DOVE       |  5.10 |
+| DAZLER     |  1.94 |
+| BLUELADY   |  2.55 |
+| PUMA       |  9.18 |
+| NIKE       |  6.02 |
+| ALLENSOLLY |  2.75 |
+| FOGG       |  6.02 |
++------------+-------+
+7 rows in set (0.00 sec)
+
 3.List the product names, only include their purchased quantity more than 3.
+
+mysql> SELECT PNAME FROM PRODUCT WHERE PID IN(SELECT PID FROM INVOICE_ITEM WHERE QUANTITY>3);
++------------+
+| PNAME      |
++------------+
+| DAZLER     |
+| BLUELADY   |
+| PUMA       |
+| ALLENSOLLY |
+| FOGG       |
++------------+
+5 rows in set (0.00 sec)
+
 4.Find the product that has no sale.
+
+
 5.List the customer names who purchased the items ‘pen’ and ‘pencil’.
 6.Display the purchased product details of the customer ’xyz’.
 7.List the names of all customers who have purchased at least 2 products, make sure that no duplicate names in the result.
