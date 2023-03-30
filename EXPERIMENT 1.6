@@ -27,3 +27,18 @@ mysql> SELECT * FROM INVOICE_MASTER;
 |      7 |    7 | 2023-03-04 |
 +--------+------+------------+
 7 rows in set (0.01 sec)
+
+mysql> create view Cust_view as select NAME from CUSTOMER where ID in(select ID from INVOICE_MASTER);
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select * from Cust_view;
++------+
+| NAME |
++------+
+| RIYA |
+| MIYA |
+| SIYA |
+| ROY  |
+| TONY |
++------+
+5 rows in set (0.01 sec)
