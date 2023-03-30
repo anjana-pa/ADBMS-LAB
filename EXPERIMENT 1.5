@@ -138,3 +138,14 @@ in(select ID from CUSTOMER where NAME='SIYA')));
 8 rows in set (0.00 sec)
 
 7.List the names of all customers who have purchased at least 2 products, make sure that no duplicate names in the result.
+
+mysql> select NAME from CUSTOMER where ID in(select ID from INVOICE_MASTER where INV_ID in(select INV_ID from INVOICE_ITEM group by INV_ID hav
+ing count(INV_ID)>=2));
++------+
+| NAME |
++------+
+| MIYA |
+| TONY |
++------+
+2 rows in set (0.00 sec)
+
