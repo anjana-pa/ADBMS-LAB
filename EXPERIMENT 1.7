@@ -38,17 +38,31 @@ mysql> SELECT COUNT(*),CITY FROM CUSTOMER GROUP BY CITY;
 +----------+----------+
 5 rows in set (0.00 sec)
 
-4.Find number of customers in each city, only include city with more than 3 customers.
+4.Find number of customers in each city, only include city with more than 2 customers.
 
-mysql> SELECT COUNT(*),CITY FROM CUSTOMER GROUP BY CITY HAVING COUNT(*)>1; //WRONG QUERY
-+----------+----------+
-| COUNT(*) | CITY     |
-+----------+----------+
-|        2 | CALICUT  |
-|        2 | BANGLORE |
-|        2 | KOLKATA  |
-+----------+----------+
-3 rows in set (0.00 sec)
+mysql> SELECT * FROM CUSTOMER;
++----+-------+-------------------+----------+------------+
+| ID | NAME  | ADDRESS           | CITY     | PH_N0      |
++----+-------+-------------------+----------+------------+
+|  1 | RIYA  | PALLATH           | CALICUT  | 9876545612 |
+|  2 | LIYA  | PALLIKKADAVATH    | BANGLORE | 9876545613 |
+|  3 | MIYA  | THEKKEPUZHIYIL    | CHENNAI  | 3948478389 |
+|  4 | SIYA  | KEZHAKKETHIRUVATH | KOLKATA  | 3647882937 |
+|  5 | ZIYA  | SREENILAYAM       | KOCHI    | 9372537698 |
+|  6 | ROY   | CHAKKITAKANDI     | BANGLORE | 8493678465 |
+|  7 | TONY  | VADASSERI         | KOLKATA  | 9876543210 |
+|  8 | BONY  | GREENVILLA        | CALICUT  | NULL       |
+|  9 | DHIYA | MANGALASSERI      | CALICUT  | 9830908065 |
++----+-------+-------------------+----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT COUNT(*),CITY FROM CUSTOMER GROUP BY CITY HAVING COUNT(*)>2;
++----------+---------+
+| COUNT(*) | CITY    |
++----------+---------+
+|        3 | CALICUT |
++----------+---------+
+1 row in set (0.00 sec)
 
 5.Show data as displayed ‘who, where’ Eg: ‘customer1 lives in ekm’.
 
@@ -68,4 +82,3 @@ mysql> SELECT CONCAT(NAME, " LIVES IN ", CITY) AS CUST_INFO FROM CUSTOMER;
 8 rows in set (0.00 sec)
 
 
-/WRONG QUERY, RESUBMIT
