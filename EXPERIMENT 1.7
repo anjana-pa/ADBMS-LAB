@@ -26,6 +26,17 @@ mysql> SELECT MIN(PRICE),MAX(PRICE),AVG(PRICE) FROM PRODUCT;
 
 3.Find number of customers in each city.
 
+mysql> SELECT COUNT(*),CITY FROM CUSTOMER GROUP BY CITY;
++----------+----------+
+| COUNT(*) | CITY     |
++----------+----------+
+|        2 | CALICUT  |
+|        2 | BANGLORE |
+|        1 | CHENNAI  |
+|        2 | KOLKATA  |
+|        1 | KOCHI    |
++----------+----------+
+5 rows in set (0.00 sec)
 
 4.Find number of customers in each city, only include city with more than 3 customers.
 
