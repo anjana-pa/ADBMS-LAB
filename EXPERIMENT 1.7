@@ -40,7 +40,7 @@ mysql> SELECT COUNT(*),CITY FROM CUSTOMER GROUP BY CITY;
 
 4.Find number of customers in each city, only include city with more than 3 customers.
 
-mysql> SELECT COUNT(*),CITY FROM CUSTOMER GROUP BY CITY HAVING COUNT(*)>1;
+mysql> SELECT COUNT(*),CITY FROM CUSTOMER GROUP BY CITY HAVING COUNT(*)>1; //WRONG QUERY
 +----------+----------+
 | COUNT(*) | CITY     |
 +----------+----------+
@@ -68,3 +68,4 @@ mysql> SELECT CONCAT(NAME, " LIVES IN ", CITY) AS CUST_INFO FROM CUSTOMER;
 8 rows in set (0.00 sec)
 
 
+/WRONG QUERY, RESUBMIT
