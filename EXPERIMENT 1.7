@@ -16,6 +16,13 @@ mysql> SELECT PNAME,PRICE FROM PRODUCT WHERE PNAME!='DOVE' ORDER BY PRICE ASC;
 
 2.Find minimum, maximum and average price of products.
 
+mysql> SELECT MIN(PRICE),MAX(PRICE),AVG(PRICE) FROM PRODUCT;
++------------+------------+------------+
+| MIN(PRICE) | MAX(PRICE) | AVG(PRICE) |
++------------+------------+------------+
+|       1.94 |       9.18 |   4.945000 |
++------------+------------+------------+
+1 row in set (0.00 sec)
 
 3.Find number of customers in each city.
 
