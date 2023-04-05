@@ -28,6 +28,21 @@ mysql> SELECT * FROM INVOICE_MASTER;
 |      7 |    7 | 2023-03-04 |
 +--------+------+------------+
 7 rows in set (0.00 sec)
+ysql> select * from INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|      1 |    1 |        2 |
+|      2 |    2 |        4 |
+|      3 |    3 |       10 |
+|      4 |    4 |        5 |
+|      5 |    5 |        1 |
+|      6 |    6 |        4 |
+|      7 |    7 |       90 |
+|      7 |    1 |        2 |
+|      2 |    7 |        4 |
++--------+------+----------+
+9 rows in set (0.00 sec)
 
 mysql> SELECT * FROM INVOICE_ITEM;
 +--------+------+----------+
@@ -139,6 +154,22 @@ in(select ID from CUSTOMER where NAME='SIYA')));
 
 7.List the names of all customers who have purchased at least 2 products, make sure that no duplicate names in the result.
 
+ysql> select * from INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|      1 |    1 |        2 |
+|      2 |    2 |        4 |
+|      3 |    3 |       10 |
+|      4 |    4 |        5 |
+|      5 |    5 |        1 |
+|      6 |    6 |        4 |
+|      7 |    7 |       90 |
+|      7 |    1 |        2 |
+|      2 |    7 |        4 |
++--------+------+----------+
+9 rows in set (0.00 sec)
+
 mysql> select NAME from CUSTOMER where ID in(select ID from INVOICE_MASTER where INV_ID in(select INV_ID from INVOICE_ITEM group by INV_ID hav
 ing count(INV_ID)>=2));
 +------+
@@ -149,4 +180,4 @@ ing count(INV_ID)>=2));
 +------+
 2 rows in set (0.00 sec)
 
-//WRONG INVOICE ITEM TABLE....SOME CUSTOMER SHOULD BUY 2 OR MORE ITEMS
+
