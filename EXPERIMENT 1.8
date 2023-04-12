@@ -103,3 +103,24 @@ er join INVOICE_ITEM on INVOICE_MASTER.INV_ID=INVOICE_ITEM.INV_ID inner join PRO
 1 row in set (0.00 sec)
 
 4.Display all customer details and invoice details must include customer has not purchased items.
+
+mysql> select CUSTOMER.NAME,PRODUCT.PNAME,INVOICE_MASTER.INV_ID,INVOICE_MASTER.INV_DATE from CUSTOMER left join INVOICE_MASTER on CUSTOMER.ID=INVOICE_MASTER.ID left join INVOICE_ITEM on INVOICE_MASTER.INV_ID=INVOICE_ITEM.INV_ID left join PRODUCT on PRODUCT.PID=INVOICE_ITEM.PID;
++-------+------------+--------+------------+
+| NAME  | PNAME      | INV_ID | INV_DATE   |
++-------+------------+--------+------------+
+| RIYA  | DOVE       |      1 | 2023-01-01 |
+| LIYA  | NULL       |   NULL | NULL       |
+| MIYA  | DAZLER     |      2 | 2023-01-04 |
+| MIYA  | FOGG       |      2 | 2023-01-04 |
+| MIYA  | BLUELADY   |      3 | 2023-01-15 |
+| SIYA  | PUMA       |      4 | 2023-02-12 |
+| ZIYA  | NULL       |   NULL | NULL       |
+| ROY   | NIKE       |      5 | 2023-02-14 |
+| ROY   | ALLENSOLLY |      6 | 2023-02-23 |
+| TONY  | FOGG       |      7 | 2023-03-04 |
+| TONY  | DOVE       |      7 | 2023-03-04 |
+| BONY  | NULL       |   NULL | NULL       |
+| DHIYA | NULL       |   NULL | NULL       |
++-------+------------+--------+------------+
+13 rows in set (0.00 sec)
+
