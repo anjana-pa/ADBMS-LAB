@@ -121,7 +121,7 @@ mysql> select * from CUSTOMER where PH_N0 is null and CITY="CALICUT";
 +----+------+------------+---------+-------+
 1 row in set (0.01 sec)
 
-4.List the product names if it finds any records in the invoice items table has quantity =3 (use special operators)
+4.List the product names if it finds any records in the invoice items table has quantity =4 (use special operators)
 
 mysql> SELECT * FROM PRODUCT;
 +-----+------------+-------+
@@ -164,3 +164,4 @@ mysql> select PNAME from PRODUCT where PID in(select PID from INVOICE_ITEM where
 +------------+
 3 rows in set (0.00 sec)
 
+//VERIFIED
