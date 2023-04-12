@@ -1,10 +1,105 @@
+mysql> SELECT * FROM CUSTOMER;
++----+-------+-------------------+----------+------------+
+| ID | NAME  | ADDRESS           | CITY     | PH_N0      |
++----+-------+-------------------+----------+------------+
+|  1 | RIYA  | PALLATH           | CALICUT  | 9876545612 |
+|  2 | LIYA  | PALLIKKADAVATH    | BANGLORE | 9876545613 |
+|  3 | MIYA  | THEKKEPUZHIYIL    | CHENNAI  | 3948478389 |
+|  4 | SIYA  | KEZHAKKETHIRUVATH | KOLKATA  | 3647882937 |
+|  5 | ZIYA  | SREENILAYAM       | KOCHI    | 9372537698 |
+|  6 | ROY   | CHAKKITAKANDI     | BANGLORE | 8493678465 |
+|  7 | TONY  | VADASSERI         | KOLKATA  | 9876543210 |
+|  8 | BONY  | GREENVILLA        | CALICUT  | NULL       |
+|  9 | DHIYA | MANGALASSERI      | CALICUT  | 9830908065 |
++----+-------+-------------------+----------+------------+
+9 rows in set (0.01 sec)
+
+mysql> SELECT * FROM INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|      1 |    1 |        2 |
+|      2 |    2 |        4 |
+|      3 |    3 |       10 |
+|      4 |    4 |        5 |
+|      5 |    5 |        1 |
+|      6 |    6 |        4 |
+|      7 |    7 |       90 |
+|      7 |    1 |        2 |
+|      2 |    7 |        4 |
++--------+------+----------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM INVOICE_MASTER;
++--------+------+------------+
+| INV_ID | ID   | INV_DATE   |
++--------+------+------------+
+|      1 |    1 | 2023-01-01 |
+|      2 |    3 | 2023-01-04 |
+|      3 |    3 | 2023-01-15 |
+|      4 |    4 | 2023-02-12 |
+|      5 |    6 | 2023-02-14 |
+|      6 |    6 | 2023-02-23 |
+|      7 |    7 | 2023-03-04 |
++--------+------+------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM PRODUCT;
++-----+------------+-------+
+| PID | PNAME      | PRICE |
++-----+------------+-------+
+|   1 | DOVE       |  5.10 |
+|   2 | DAZLER     |  1.94 |
+|   3 | BLUELADY   |  2.55 |
+|   4 | PUMA       |  9.18 |
+|   5 | NIKE       |  6.02 |
+|   6 | ALLENSOLLY |  2.75 |
+|   7 | FOGG       |  6.02 |
+|   8 | lUX        |  6.00 |
++-----+------------+-------+
+8 rows in set (0.00 sec)
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
 1.List the product name and quantity of invoice items.
 
+mysql> select PRODUCT.PNAME, INVOICE_ITEM.QUANTITY from PRODUCT inner join INVOICE_ITEM on PRODUCT.PID=INVOICE_ITEM.PID;
++------------+----------+
+| PNAME      | QUANTITY |
++------------+----------+
+| DOVE       |        2 |
+| DOVE       |        2 |
+| DAZLER     |        4 |
+| BLUELADY   |       10 |
+| PUMA       |        5 |
+| NIKE       |        1 |
+| ALLENSOLLY |        4 |
+| FOGG       |       90 |
+| FOGG       |        4 |
++------------+----------+
+9 rows in set (0.00 sec)
 
-2.Display invoice details of the transaction dated ’31-01-2022’.
+2.Display invoice details of the transaction dated ’04-01-2023’.
 
+mysql> select CUSTOMER.NAME,PRODUCT.PNAME,PRODUCT.PRICE,INVOICE_MASTER.INV_ID,INVOICE_MASTER.INV_DATE,INVOICE_ITEM.QUANTITY from CUSTOMER inner join INVOICE_MASTER on CUSTOMER.ID=INVOICE_MASTER.ID inner join INVOICE_ITEM on INVOICE_MASTER.INV_ID=INVOICE_ITEM.INV_ID Inner join PRODUCT
+ on PRODUCT.PID=INVOICE_ITEM.PID where INV_DATE='2023-01-04';
++------+--------+-------+--------+------------+----------+
+| NAME | PNAME  | PRICE | INV_ID | INV_DATE   | QUANTITY |
++------+--------+-------+--------+------------+----------+
+| MIYA | DAZLER |  1.94 |      2 | 2023-01-04 |        4 |
+| MIYA | FOGG   |  6.02 |      2 | 2023-01-04 |        4 |
++------+--------+-------+--------+------------+----------+
+2 rows in set (0.00 sec)
 
 3.Display the customer name, product name, invoice date of purchased item ‘pen’.
 
+mysql> select CUSTOMER.NAME,PRODUCT.PNAME,INVOICE_MASTER.INV_DATE from CUSTOMER inner join INVOICE_MASTER on CUSTOMER.ID=INVOICE_MASTER.ID inn
+er join INVOICE_ITEM on INVOICE_MASTER.INV_ID=INVOICE_ITEM.INV_ID inner join PRODUCT on PRODUCT.PID=INVOICE_ITEM.PID where PNAME='PUMA';
++------+-------+------------+
+| NAME | PNAME | INV_DATE   |
++------+-------+------------+
+| SIYA | PUMA  | 2023-02-12 |
++------+-------+------------+
+1 row in set (0.00 sec)
 
 4.Display all customer details and invoice details must include customer has not purchased items.
