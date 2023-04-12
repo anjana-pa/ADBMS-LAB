@@ -1,10 +1,166 @@
-1.Display customer_id, city  who lives either in ‘CLT’ or in ‘TVM’
+mysql> SELECT * FROM CUSTOMER;
++----+-------+-------------------+----------+------------+
+| ID | NAME  | ADDRESS           | CITY     | PH_N0      |
++----+-------+-------------------+----------+------------+
+|  1 | RIYA  | PALLATH           | CALICUT  | 9876545612 |
+|  2 | LIYA  | PALLIKKADAVATH    | BANGLORE | 9876545613 |
+|  3 | MIYA  | THEKKEPUZHIYIL    | CHENNAI  | 3948478389 |
+|  4 | SIYA  | KEZHAKKETHIRUVATH | KOLKATA  | 3647882937 |
+|  5 | ZIYA  | SREENILAYAM       | KOCHI    | 9372537698 |
+|  6 | ROY   | CHAKKITAKANDI     | BANGLORE | 8493678465 |
+|  7 | TONY  | VADASSERI         | KOLKATA  | 9876543210 |
+|  8 | BONY  | GREENVILLA        | CALICUT  | NULL       |
+|  9 | DHIYA | MANGALASSERI      | CALICUT  | 9830908065 |
++----+-------+-------------------+----------+------------+
+9 rows in set (0.01 sec)
 
+mysql> SELECT * FROM INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|      1 |    1 |        2 |
+|      2 |    2 |        4 |
+|      3 |    3 |       10 |
+|      4 |    4 |        5 |
+|      5 |    5 |        1 |
+|      6 |    6 |        4 |
+|      7 |    7 |       90 |
+|      7 |    1 |        2 |
+|      2 |    7 |        4 |
++--------+------+----------+
+9 rows in set (0.00 sec)
+
+mysql> SELECT * FROM INVOICE_MASTER;
++--------+------+------------+
+| INV_ID | ID   | INV_DATE   |
++--------+------+------------+
+|      1 |    1 | 2023-01-01 |
+|      2 |    3 | 2023-01-04 |
+|      3 |    3 | 2023-01-15 |
+|      4 |    4 | 2023-02-12 |
+|      5 |    6 | 2023-02-14 |
+|      6 |    6 | 2023-02-23 |
+|      7 |    7 | 2023-03-04 |
++--------+------+------------+
+7 rows in set (0.00 sec)
+
+mysql> SELECT * FROM PRODUCT;
++-----+------------+-------+
+| PID | PNAME      | PRICE |
++-----+------------+-------+
+|   1 | DOVE       |  5.10 |
+|   2 | DAZLER     |  1.94 |
+|   3 | BLUELADY   |  2.55 |
+|   4 | PUMA       |  9.18 |
+|   5 | NIKE       |  6.02 |
+|   6 | ALLENSOLLY |  2.75 |
+|   7 | FOGG       |  6.02 |
+|   8 | lUX        |  6.00 |
++-----+------------+-------+
+8 rows in set (0.00 sec)
+
+//////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+1.Display customer_id, city  who lives either in ‘CLT’ or in ‘KOCHI’
+
+mysql> select ID,CITY from CUSTOMER where CITY="CALICUT" or CITY="KOCHI";
++----+---------+
+| ID | CITY    |
++----+---------+
+|  1 | CALICUT |
+|  5 | KOCHI   |
+|  8 | CALICUT |
+|  9 | CALICUT |
++----+---------+
+4 rows in set (0.00 sec)
 
 2.Display product details with an updated price amount(new price= old price+5rs)
 
+mysql> update PRODUCT set PRICE=PRICE+5;
+Query OK, 8 rows affected (0.00 sec)
+Rows matched: 8  Changed: 8  Warnings: 0
+
+mysql> SELECT * FROM PRODUCT;
++-----+------------+-------+
+| PID | PNAME      | PRICE |
++-----+------------+-------+
+|   1 | DOVE       |    10 |
+|   2 | DAZLER     |     7 |
+|   3 | BLUELADY   |     8 |
+|   4 | PUMA       |    14 |
+|   5 | NIKE       |    11 |
+|   6 | ALLENSOLLY |     8 |
+|   7 | FOGG       |    11 |
+|   8 | lUX        |    11 |
++-----+------------+-------+
+8 rows in set (0.00 sec)
 
 3.Display customer details who doesn’t have phone number and lives in ‘Calicut’ city (use logical operators)
 
+mysql> SELECT * FROM CUSTOMER;
++----+-------+-------------------+----------+------------+
+| ID | NAME  | ADDRESS           | CITY     | PH_N0      |
++----+-------+-------------------+----------+------------+
+|  1 | RIYA  | PALLATH           | CALICUT  | 9876545612 |
+|  2 | LIYA  | PALLIKKADAVATH    | BANGLORE | 9876545613 |
+|  3 | MIYA  | THEKKEPUZHIYIL    | CHENNAI  | 3948478389 |
+|  4 | SIYA  | KEZHAKKETHIRUVATH | KOLKATA  | 3647882937 |
+|  5 | ZIYA  | SREENILAYAM       | KOCHI    | 9372537698 |
+|  6 | ROY   | CHAKKITAKANDI     | BANGLORE | 8493678465 |
+|  7 | TONY  | VADASSERI         | KOLKATA  | 9876543210 |
+|  8 | BONY  | GREENVILLA        | CALICUT  | NULL       |
+|  9 | DHIYA | MANGALASSERI      | CALICUT  | 9830908065 |
++----+-------+-------------------+----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> select * from CUSTOMER where PH_N0 is null and CITY="CALICUT";
++----+------+------------+---------+-------+
+| ID | NAME | ADDRESS    | CITY    | PH_N0 |
++----+------+------------+---------+-------+
+|  8 | BONY | GREENVILLA | CALICUT | NULL  |
++----+------+------------+---------+-------+
+1 row in set (0.01 sec)
 
 4.List the product names if it finds any records in the invoice items table has quantity =3 (use special operators)
+
+mysql> SELECT * FROM PRODUCT;
++-----+------------+-------+
+| PID | PNAME      | PRICE |
++-----+------------+-------+
+|   1 | DOVE       |    10 |
+|   2 | DAZLER     |     7 |
+|   3 | BLUELADY   |     8 |
+|   4 | PUMA       |    14 |
+|   5 | NIKE       |    11 |
+|   6 | ALLENSOLLY |     8 |
+|   7 | FOGG       |    11 |
+|   8 | lUX        |    11 |
++-----+------------+-------+
+8 rows in set (0.00 sec)
+
+mysql> SELECT * FROM INVOICE_ITEM;
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|      1 |    1 |        2 |
+|      2 |    2 |        4 |
+|      3 |    3 |       10 |
+|      4 |    4 |        5 |
+|      5 |    5 |        1 |
+|      6 |    6 |        4 |
+|      7 |    7 |       90 |
+|      7 |    1 |        2 |
+|      2 |    7 |        4 |
++--------+------+----------+
+9 rows in set (0.00 sec)
+
+mysql> select PNAME from PRODUCT where PID in(select PID from INVOICE_ITEM where QUANTITY=4);
++------------+
+| PNAME      |
++------------+
+| DAZLER     |
+| ALLENSOLLY |
+| FOGG       |
++------------+
+3 rows in set (0.00 sec)
+
