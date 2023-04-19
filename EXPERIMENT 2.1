@@ -1,7 +1,107 @@
 1.Create a procedure to display all tables in the invoice database.
 
+mysql> delimiter //
+mysql> create procedure INVOICE_DETAILS1()
+    -> BEGIN
+    -> select * from CUSTOMER;
+    -> select * from INVOICE_MASTER;
+    -> select * from INVOICE_ITEM;
+    -> select * from PRODUCT;
+    -> END
+    -> //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> call INVOICE_DETAILS1()
+    -> //
++----+-------+-------------------+----------+------------+
+| ID | NAME  | ADDRESS           | CITY     | PH_N0      |
++----+-------+-------------------+----------+------------+
+|  1 | RIYA  | PALLATH           | CALICUT  | 9876545612 |
+|  2 | LIYA  | PALLIKKADAVATH    | BANGLORE | 9876545613 |
+|  3 | MIYA  | THEKKEPUZHIYIL    | CHENNAI  | 3948478389 |
+|  4 | SIYA  | KEZHAKKETHIRUVATH | KOLKATA  | 3647882937 |
+|  5 | ZIYA  | SREENILAYAM       | KOCHI    | 9372537698 |
+|  6 | ROY   | CHAKKITAKANDI     | BANGLORE | 8493678465 |
+|  7 | TONY  | VADASSERI         | KOLKATA  | 9876543210 |
+|  8 | BONY  | GREENVILLA        | CALICUT  | NULL       |
+|  9 | DHIYA | MANGALASSERI      | CALICUT  | 9830908065 |
++----+-------+-------------------+----------+------------+
+9 rows in set (0.00 sec)
+
++--------+------+------------+
+| INV_ID | ID   | INV_DATE   |
++--------+------+------------+
+|      1 |    1 | 2023-01-01 |
+|      2 |    3 | 2023-01-04 |
+|      3 |    3 | 2023-01-15 |
+|      4 |    4 | 2023-02-12 |
+|      5 |    6 | 2023-02-14 |
+|      6 |    6 | 2023-02-23 |
+|      7 |    7 | 2023-03-04 |
++--------+------+------------+
+7 rows in set (0.00 sec)
+
++--------+------+----------+
+| INV_ID | PID  | QUANTITY |
++--------+------+----------+
+|      1 |    1 |        2 |
+|      2 |    2 |        4 |
+|      3 |    3 |       10 |
+|      4 |    4 |        5 |
+|      5 |    5 |        1 |
+|      6 |    6 |        4 |
+|      7 |    7 |       90 |
+|      7 |    1 |        2 |
+|      2 |    7 |        4 |
++--------+------+----------+
+9 rows in set (0.00 sec)
+
++-----+------------+-------+
+| PID | PNAME      | PRICE |
++-----+------------+-------+
+|   1 | DOVE       |    10 |
+|   2 | DAZLER     |     7 |
+|   3 | BLUELADY   |     8 |
+|   4 | PUMA       |    14 |
+|   5 | NIKE       |    11 |
+|   6 | ALLENSOLLY |     8 |
+|   7 | FOGG       |    11 |
+|   8 | lUX        |    11 |
++-----+------------+-------+
+8 rows in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+///////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 2.Create a procedure to find greatest of 3 numbers.
 
+mysql> delimiter **
+mysql> create procedure greatest_no(a int,b int,c int)
+    -> begin
+    -> if(a>b) and (a>c) then
+    -> select a as 'Greatest';
+    -> elseif(b>a) and (b>c) then
+    -> select b as 'Greatest';
+    -> else
+    -> select c as 'Greatest';
+    -> end if;
+    -> end **
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call greatest_no(-5,60,101)
+    -> **
++----------+
+| Greatest |
++----------+
+|      101 |
++----------+
+1 row in set (0.00 sec)
+
+Query OK, 0 rows affected (0.00 sec)
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
 
 3.Create a procedure to display invoice details of a particular customer.
+
+
