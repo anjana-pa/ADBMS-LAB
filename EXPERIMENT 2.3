@@ -1,0 +1,67 @@
+                                         EXPERIMENT NO: 2.3	-PL/SQL PROGRAMS – TRIGGER
+                                       --------------------------------------------------
+                                       
+1. Create a trigger to handle updates to the customer table.
+
+mysql> DELIMITER //
+mysql> create table customer_11(id int,name varchar(15),address varchar(15),city varchar(25),phno bigint);
+    -> //
+Query OK, 0 rows affected (0.02 sec)
+
+mysql> create trigger updaters
+    -> before update on CUSTOMER
+    -> for each row
+    -> begin
+    -> insert into customer_11 values(old.ID,old.NAME,old.ADDRESS,old.CITY,old.PH_N0);
+    -> end//
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from CUSTOMER;
+    -> //
++----+-------+-------------------+----------+------------+
+| ID | NAME  | ADDRESS           | CITY     | PH_N0      |
++----+-------+-------------------+----------+------------+
+|  1 | RIYA  | PALLATH           | CALICUT  | 9876545612 |
+|  2 | LIYA  | PALLIKKADAVATH    | BANGLORE | 9876545613 |
+|  3 | MIYA  | THEKKEPUZHIYIL    | CHENNAI  | 3948478389 |
+|  4 | SIYA  | KEZHAKKETHIRUVATH | KOLKATA  | 3647882937 |
+|  5 | ZIYA  | SREENILAYAM       | KOCHI    | 9372537698 |
+|  6 | ROY   | CHAKKITAKANDI     | BANGLORE | 8493678465 |
+|  7 | TONY  | VADASSERI         | KOLKATA  | 9876543210 |
+|  8 | BONY  | GREENVILLA        | CALICUT  | NULL       |
+|  9 | DHIYA | MANGALASSERI      | CALICUT  | 9830908065 |
++----+-------+-------------------+----------+------------+
+9 rows in set (0.00 sec)
+
+mysql> update CUSTOMER set CITY="BANGLORE" where ID=8;
+    -> //
+Query OK, 1 row affected (0.01 sec)
+Rows matched: 1  Changed: 1  Warnings: 0
+
+mysql> select * from customer_11;
+    -> //
++------+------+------------+---------+------+
+| id   | name | address    | city    | phno |
++------+------+------------+---------+------+
+|    8 | BONY | GREENVILLA | CALICUT | NULL |
++------+------+------------+---------+------+
+1 row in set (0.00 sec)
+
+mysql> select * from CUSTOMER;
+    -> //
++----+-------+-------------------+----------+------------+
+| ID | NAME  | ADDRESS           | CITY     | PH_N0      |
++----+-------+-------------------+----------+------------+
+|  1 | RIYA  | PALLATH           | CALICUT  | 9876545612 |
+|  2 | LIYA  | PALLIKKADAVATH    | BANGLORE | 9876545613 |
+|  3 | MIYA  | THEKKEPUZHIYIL    | CHENNAI  | 3948478389 |
+|  4 | SIYA  | KEZHAKKETHIRUVATH | KOLKATA  | 3647882937 |
+|  5 | ZIYA  | SREENILAYAM       | KOCHI    | 9372537698 |
+|  6 | ROY   | CHAKKITAKANDI     | BANGLORE | 8493678465 |
+|  7 | TONY  | VADASSERI         | KOLKATA  | 9876543210 |
+|  8 | BONY  | GREENVILLA        | BANGLORE | NULL       |
+|  9 | DHIYA | MANGALASSERI      | CALICUT  | 9830908065 |
++----+-------+-------------------+----------+------------+
+9 rows in set (0.00 sec)
+
+/////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
