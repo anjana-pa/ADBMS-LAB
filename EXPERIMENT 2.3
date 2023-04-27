@@ -65,3 +65,57 @@ mysql> select * from CUSTOMER;
 9 rows in set (0.00 sec)
 
 /////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
+
+2.Create a trigger to handle inserts to the product relation ( if price < 5 the set price to 10)
+
+mysql> delimiter //
+mysql> create trigger product_price
+    -> before insert
+    -> on PRODUCT
+    -> for each row
+    -> begin
+    -> if new.PRICE < 5 then
+    -> set new.PRICE=10;
+    -> end if;
+    -> end
+    -> //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> select * from PRODUCT;
+    -> //
++-----+------------+-------+
+| PID | PNAME      | PRICE |
++-----+------------+-------+
+|   1 | DOVE       |    10 |
+|   2 | DAZLER     |     7 |
+|   3 | BLUELADY   |     8 |
+|   4 | PUMA       |    14 |
+|   5 | NIKE       |    11 |
+|   6 | ALLENSOLLY |     8 |
+|   7 | FOGG       |    11 |
+|   8 | lUX        |    11 |
++-----+------------+-------+
+8 rows in set (0.00 sec)
+
+mysql> insert into PRODUCT values(9,'pen',5);
+    -> //
+Query OK, 1 row affected (0.00 sec)
+
+mysql> select * from PRODUCT;
+    -> //
++-----+------------+-------+
+| PID | PNAME      | PRICE |
++-----+------------+-------+
+|   1 | DOVE       |    10 |
+|   2 | DAZLER     |     7 |
+|   3 | BLUELADY   |     8 |
+|   4 | PUMA       |    14 |
+|   5 | NIKE       |    11 |
+|   6 | ALLENSOLLY |     8 |
+|   7 | FOGG       |    11 |
+|   8 | lUX        |    11 |
+|   9 | pen        |     5 |
++-----+------------+-------+
+9 rows in set (0.00 sec)
+
+////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////////
