@@ -1,0 +1,40 @@
+                                       EXPERIMENT NO: 2.4-PL/SQL PROGRAMS – CURSOR
+                                      
+1. Write a PL/SQL program to create a name list of customers using CURSOR         
+
+mysql> delimiter //
+mysql> create procedure cust_name(INOUT name_list varchar(4000))
+    -> begin
+    -> declare is_done integer default 0;
+    -> declare s_name varchar(100) default "";
+    -> declare stud_cursor CURSOR for
+    -> select NAME from CUSTOMER;
+    -> declare continue handler for not found set is_done = 1;
+    -> open stud_cursor;
+    -> get_list:LOOP
+    -> fetch stud_cursor into s_name;
+    -> if is_done = 1 then
+    -> leave get_list;
+    -> end if;
+    -> set name_list = concat(s_name,";",name_list);
+    -> end loop get_list;
+    -> close stud_cursor;
+    -> end //
+Query OK, 0 rows affected (0.01 sec)
+
+mysql> set @name_list="";
+    -> //
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> call cust_name(@name_list);
+    -> //
+Query OK, 0 rows affected (0.00 sec)
+
+mysql> select @name_list;
+    -> //
++-----------------------------------------------+
+| @name_list                                    |
++-----------------------------------------------+
+| DHIYA;BONY;TONY;ROY;ZIYA;SIYA;MIYA;LIYA;RIYA; |
++-----------------------------------------------+
+1 row in set (0.00 sec)
