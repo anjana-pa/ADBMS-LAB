@@ -71,4 +71,49 @@ invoices> db.customers.find()
 
 3.Write a MongoDB query to update the city in the collection CUSTOMER.
 
+invoices> db.customers.update({city:"calicut"},{$set:{city:"kozhikode"}})
+DeprecationWarning: Collection.update() is deprecated. Use updateOne, updateMany, or bulkWrite.
+{
+  acknowledged: true,
+  insertedId: null,
+  matchedCount: 1,
+  modifiedCount: 1,
+  upsertedCount: 0
+}
+invoices> db.customers.find()
+[
+  {
+    _id: ObjectId("648175a6609e613f0d660d50"),
+    c_id: '1',
+    name: 'neenu',
+    age: '21',
+    gender: 'female',
+    city: 'kozhikode'
+  },
+  {
+    _id: ObjectId("648175a6609e613f0d660d51"),
+    c_id: '2',
+    name: 'kuttu',
+    age: '22',
+    gender: 'female',
+    city: 'wayanad'
+  },
+  {
+    _id: ObjectId("648175a6609e613f0d660d52"),
+    c_id: '3',
+    name: 'femi',
+    age: '21',
+    gender: 'female',
+    city: 'thrissur'
+  },
+  {
+    _id: ObjectId("648175a6609e613f0d660d53"),
+    c_id: '4',
+    name: 'yathith',
+    age: '20',
+    gender: 'male',
+    city: 'kochi'
+  }
+]
+
 4. Write a MongoDB query to delete the first matched document whose city is “Calicut”.
