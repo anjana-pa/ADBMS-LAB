@@ -1,5 +1,34 @@
 1.Write a MongoDB query to create an INVOICE database and collections (CUSTOMER, PRODUCT) and its corresponding documents.
 
+test> use invoice
+switched to db invoice
+invoice> use invoices
+switched to db invoices
+invoices> db.createCollection("products")
+{ ok: 1 }
+invoices> db.customers.insertMany([{c_id:"1",name:"neenu",age:"21",gender:"female",city:"calicut"},{c_id:"2",name:"kuttu",age:"22",gender:"feminvoices> db.customers.insertMany([{c_id:"1",name:"neenu",age:"21",gender:"female",city:"calicut"},{c_id:"2",name:"kuttu",age:"22",gender:"female",city:"wayanad"},{c_id:"3",name:"femi",age:"21",gender:"female",city:"thrissur"},{c_id:"4",name:"yathith",age:"20",gender:"male",city:"kochi"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("648175a6609e613f0d660d50"),
+    '1': ObjectId("648175a6609e613f0d660d51"),
+    '2': ObjectId("648175a6609e613f0d660d52"),
+    '3': ObjectId("648175a6609e613f0d660d53")
+  }
+}
+
+
+invoices> db.products.insertMany([{pid:"101",pname:"pen",price:"5"},{pid:"102",pname:"book",price:"40"},{pid:"103",pname:"box",price:"50"},{pid:"104",pname:"umbrella",price:"500"},{pid:"105",pname:"eraser",price:"5"}])
+{
+  acknowledged: true,
+  insertedIds: {
+    '0': ObjectId("648177d3609e613f0d660d54"),
+    '1': ObjectId("648177d3609e613f0d660d55"),
+    '2': ObjectId("648177d3609e613f0d660d56"),
+    '3': ObjectId("648177d3609e613f0d660d57"),
+    '4': ObjectId("648177d3609e613f0d660d58")
+  }
+}
 
 
 2.Write a MongoDB query to find all documents from the collection CUSTOMER
