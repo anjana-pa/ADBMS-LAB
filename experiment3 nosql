@@ -1,0 +1,9 @@
+1.Write a MongoDB query to create an INVOICE database and collections (CUSTOMER, PRODUCT) and its corresponding documents.
+
+
+
+2.Write a MongoDB query to find all documents from the collection CUSTOMER
+
+3.Write a MongoDB query to update the city in the collection CUSTOMER.
+
+4. Write a MongoDB query to delete the first matched document whose city is “Calicut”.
