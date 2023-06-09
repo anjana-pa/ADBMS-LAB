@@ -1,0 +1,7 @@
+1.Write a MongoDB query to display the customer documents having city ‘ekm’,’tvm’.
+
+
+2.Write a MongoDB query to display all customer documents who have age >50.
+
+
+3.Write a MongoDB query to find customer documents who not live in ‘tvm’.
