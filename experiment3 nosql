@@ -116,4 +116,37 @@ invoices> db.customers.find()
   }
 ]
 
-4. Write a MongoDB query to delete the first matched document whose city is “Calicut”.
+4. Write a MongoDB query to delete the first matched document whose city is “kozhikode”.
+
+test> use invoices
+switched to db invoices
+invoices> db.customers.deleteOne({city:"kozhikode"})
+{ acknowledged: true, deletedCount: 1 }
+invoices> db.customers.find()
+[
+  {
+    _id: ObjectId("648175a6609e613f0d660d51"),
+    c_id: '2',
+    name: 'kuttu',
+    age: '22',
+    gender: 'female',
+    city: 'wayanad'
+  },
+  {
+    _id: ObjectId("648175a6609e613f0d660d52"),
+    c_id: '3',
+    name: 'femi',
+    age: '21',
+    gender: 'female',
+    city: 'thrissur'
+  },
+  {
+    _id: ObjectId("648175a6609e613f0d660d53"),
+    c_id: '4',
+    name: 'yathith',
+    age: '20',
+    gender: 'male',
+    city: 'kochi'
+  }
+]
+
