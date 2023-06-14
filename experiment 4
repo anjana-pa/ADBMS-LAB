@@ -22,5 +22,16 @@ invoices> db.customers.find({$or:[{"city":"wayanad"},{"city":"thrissur"}]}).pret
 
 2.Write a MongoDB query to display all customer documents who have age >50.
 
+invoices> db.customers.find({"age":{$gt:'21'}}).pretty()
+[
+  {
+    _id: ObjectId("648175a6609e613f0d660d51"),
+    c_id: '2',
+    name: 'kuttu',
+    age: '22',
+    gender: 'female',
+    city: 'wayanad'
+  }
+]
 
 3.Write a MongoDB query to find customer documents who not live in ‘tvm’.
