@@ -29,6 +29,11 @@ invoices> db.customers.find().sort({name:1})
 ]
 
 2.Write a MongoDB query to count number of customers in each city.
-
+invoices> db.customers.aggregate([{$group:{_id:"$city",total:{$sum:1}}}])
+[
+  { _id: 'thrissur', total: 1 },
+  { _id: 'kochi', total: 1 },
+  { _id: 'wayanad', total: 1 }
+]
 
 3.Write a MongoDB query to find minimum and maximum age in each city.
