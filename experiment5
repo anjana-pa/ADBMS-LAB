@@ -1,5 +1,32 @@
 1.Write a MongoDB query to sort customer details in ascending order of their name.
 
+invoices> db.customers.find().sort({name:1})
+[
+  {
+    _id: ObjectId("648175a6609e613f0d660d52"),
+    c_id: '3',
+    name: 'femi',
+    age: '21',
+    gender: 'female',
+    city: 'thrissur'
+  },
+  {
+    _id: ObjectId("648175a6609e613f0d660d51"),
+    c_id: '2',
+    name: 'kuttu',
+    age: '22',
+    gender: 'female',
+    city: 'wayanad'
+  },
+  {
+    _id: ObjectId("648175a6609e613f0d660d53"),
+    c_id: '4',
+    name: 'yathith',
+    age: '20',
+    gender: 'male',
+    city: 'kochi'
+  }
+]
 
 2.Write a MongoDB query to count number of customers in each city.
 
