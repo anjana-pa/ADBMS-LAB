@@ -1,5 +1,24 @@
-1.Write a MongoDB query to display the customer documents having city ‘ekm’,’tvm’.
+1.Write a MongoDB query to display the customer documents having city ‘wayanad’,’thrissur’.
 
+invoices> db.customers.find({$or:[{"city":"wayanad"},{"city":"thrissur"}]}).pretty()
+[
+  {
+    _id: ObjectId("648175a6609e613f0d660d51"),
+    c_id: '2',
+    name: 'kuttu',
+    age: '22',
+    gender: 'female',
+    city: 'wayanad'
+  },
+  {
+    _id: ObjectId("648175a6609e613f0d660d52"),
+    c_id: '3',
+    name: 'femi',
+    age: '21',
+    gender: 'female',
+    city: 'thrissur'
+  }
+]
 
 2.Write a MongoDB query to display all customer documents who have age >50.
 
