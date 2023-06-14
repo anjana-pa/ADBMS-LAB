@@ -1,0 +1,7 @@
+1.Write a MongoDB query to sort customer details in ascending order of their name.
+
+
+2.Write a MongoDB query to count number of customers in each city.
+
+
+3.Write a MongoDB query to find minimum and maximum age in each city.
