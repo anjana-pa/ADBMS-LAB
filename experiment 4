@@ -35,3 +35,32 @@ invoices> db.customers.find({"age":{$gt:'21'}}).pretty()
 ]
 
 3.Write a MongoDB query to find customer documents who not live in ‘tvm’.
+
+invoices> db.customers.find({ "place": { $ne: "trivandrum" } })
+[
+  {
+    _id: ObjectId("648175a6609e613f0d660d51"),
+    c_id: '2',
+    name: 'kuttu',
+    age: '22',
+    gender: 'female',
+    city: 'wayanad'
+  },
+  {
+    _id: ObjectId("648175a6609e613f0d660d52"),
+    c_id: '3',
+    name: 'femi',
+    age: '21',
+    gender: 'female',
+    city: 'thrissur'
+  },
+  {
+    _id: ObjectId("648175a6609e613f0d660d53"),
+    c_id: '4',
+    name: 'yathith',
+    age: '20',
+    gender: 'male',
+    city: 'kochi'
+  }
+]
+
