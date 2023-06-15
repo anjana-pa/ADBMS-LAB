@@ -1,0 +1,74 @@
+1.Write a MongoDB query to create a user “CUSTOMER1” and grant the read role in the INVOICE database.
+-----------------------------------------------------------------------------------------------------
+
+test> use admin
+switched to db admin
+
+
+admin> db.createUser({ user: "kuttuz", pwd: "1234", roles: [{ role: "read", db: "invoices" }], })
+{ ok: 1 }
+admin> 
+[2]+  Stopped                 mongosh
+ksb@ksb-H410M-S2-V2:~$ sudo mongosh -u kuttuz -p 1234
+Current Mongosh Log ID:	648ae043bc93ed7cb6872d8e
+Connecting to:		mongodb://<credentials>@127.0.0.1:27017/?directConnection=true&serverSelectionTimeoutMS=2000&appName=mongosh+1.9.1
+Using MongoDB:		6.0.6
+Using Mongosh:		1.9.1
+
+For mongosh info see: https://docs.mongodb.com/mongodb-shell/
+
+
+To help improve our products, anonymous usage data is collected and sent to MongoDB periodically (https://www.mongodb.com/legal/privacy-policy).
+You can opt-out by running the disableTelemetry() command.
+
+------
+   The server generated these startup warnings when booting
+   2023-06-15T14:51:46.753+05:30: Using the XFS filesystem is strongly recommended with the WiredTiger storage engine. See http://dochub.mongodb.org/core/prodnotes-filesystem
+   2023-06-15T14:51:47.315+05:30: Access control is not enabled for the database. Read and write access to data and configuration is unrestricted
+   2023-06-15T14:51:47.315+05:30: vm.max_map_count is too low
+------
+--------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------------
+2.Write a MongoDB query to create the backup for the INVOICE database.
+------------------------------------------------------------------------------------------------------------------------------------------------------
+ksb@ksb-H410M-S2-V2:~$ mongodump --db invoices
+2023-06-15T15:30:06.620+0530	writing invoices.products to dump/invoices/products.bson
+2023-06-15T15:30:06.622+0530	done dumping invoices.products (5 documents)
+2023-06-15T15:30:06.624+0530	writing invoices.customers to dump/invoices/customers.bson
+2023-06-15T15:30:06.624+0530	done dumping invoices.customers (3 documents)
+----------------------------------------------------------------------------------------------------------------------------------------------------
+
+3.      Write a MongoDB query to restore a particular database or a collection.
+------------------------------------------------------------------------------------------------------------------------------------------------------
+test> use invoices
+switched to db invoices
+
+invoices> db.dropDatabase()
+{ ok: 1, dropped: 'invoices' }
+invoices> show dbs
+admin   180.00 KiB
+config  108.00 KiB
+local    72.00 KiB
+test      8.00 KiB
+
+ksb@ksb-H410M-S2-V2:~$ mongorestore --db invoices dump/invoices
+2023-06-15T15:34:19.722+0530	The --db and --collection flags are deprecated for this use-case; please use --nsInclude instead, i.e. with --nsInclude=${DATABASE}.${COLLECTION}
+2023-06-15T15:34:19.722+0530	building a list of collections to restore from dump/invoices dir
+2023-06-15T15:34:19.722+0530	reading metadata for invoices.customers from dump/invoices/customers.metadata.json
+2023-06-15T15:34:19.722+0530	reading metadata for invoices.products from dump/invoices/products.metadata.json
+2023-06-15T15:34:19.730+0530	restoring invoices.products from dump/invoices/products.bson
+2023-06-15T15:34:19.732+0530	restoring invoices.customers from dump/invoices/customers.bson
+2023-06-15T15:34:19.741+0530	finished restoring invoices.products (5 documents, 0 failures)
+2023-06-15T15:34:19.742+0530	finished restoring invoices.customers (3 documents, 0 failures)
+2023-06-15T15:34:19.742+0530	no indexes to restore for collection invoices.products
+2023-06-15T15:34:19.742+0530	no indexes to restore for collection invoices.customers
+2023-06-15T15:34:19.742+0530	8 document(s) restored successfully. 0 document(s) failed to restore.
+
+
+test> show dbs
+admin     180.00 KiB
+config    108.00 KiB
+invoices   80.00 KiB
+local      72.00 KiB
+test        8.00 KiB
+
+-----------------------------------------------------------------------------------------------------------------------------------------------------
