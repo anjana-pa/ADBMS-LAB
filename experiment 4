@@ -64,3 +64,4 @@ invoices> db.customers.find({ "place": { $ne: "trivandrum" } })
   }
 ]
 
+//VERIFIED
