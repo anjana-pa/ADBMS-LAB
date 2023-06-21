@@ -1,0 +1,7 @@
+                                            Assignment No: 7- NoSQL Shell Commands
+                                            
+ 1.Write a MongoDB query to create an index for the collection customer using the field customer_name.
+
+2.Create two MongoDB replication servers and do the necessary operations.
+
+3.Perform MongoDB sharding.                                           
