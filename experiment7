@@ -14,7 +14,7 @@ invoices> db.customers.getIndexes()
 ]
 invoices> 
 ---------------------------------------------------------------------------------------------------------------------------------------------------
-
+//VERIFIED
 2.Create two MongoDB replication servers and do the necessary operations.
 
 3.Perform MongoDB sharding.                                           
