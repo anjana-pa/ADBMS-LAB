@@ -46,7 +46,7 @@
 <body>
 	<center>
 		<form style="max-width:450px;margin:auto">
-			<h2><u>	HARI MAMMANTE KADA</u></h2>
+			<h2><u>	LuLLu Store</u></h2>
 
 			<div class="input-icons">
 				<i class="fa fa-envelope icon">
